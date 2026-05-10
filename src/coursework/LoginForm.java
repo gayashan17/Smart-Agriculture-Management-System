@@ -207,13 +207,27 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pnlLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLoginMouseClicked
-        Color color1 = new Color(153,255,255);
-        Color color2 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        Color color1 = new Color(0,153,255);
         Functions.mouseClick(pnlLogin,color1,color2);
         
         if(txtuname.getText().isEmpty()||txtpw.getText().isEmpty())
         {
             lblWarning.setText("Please fill in all fields to continue");
+        }
+        else if(Role == "")
+        {
+            lblWarning.setText("Please select your account Role");
+            lblWarning.setVisible(true);
+        }
+        else if(DBvalidation.checkUserPassword(txtuname.getText(), txtpw.getText())== false)
+        {
+            lblWarning.setText("Incorrect Password!");
+            lblWarning.setVisible(true);
+        }
+        else
+        {
+            System.out.println("pass");
         }
         
     }//GEN-LAST:event_pnlLoginMouseClicked

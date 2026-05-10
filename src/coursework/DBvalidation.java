@@ -28,13 +28,12 @@ public class DBvalidation {
             if(rs.next())
             {
                 dbname = rs.getString("username");
-                return dbname;
-            }
-            
+            }  
         }
         catch(Exception e)
         {
-            JOptionPane.showInputDialog(null, "Error while trying to Check user: "+e);
+            JOptionPane.showMessageDialog(null,"Error while trying to Check user: "+e);
+            System.out.println(e);
         }
         finally
         {
@@ -43,16 +42,13 @@ public class DBvalidation {
                 if(conn != null)
                 {
                     conn.close();
-                }
-                
+                }                
             }
             catch(Exception e)
             {
                 System.out.println("Error while trying to close conn: "+e);
-            }
-            
-        }
-        
+            }            
+        }       
         if(dbname !=null)
         {
             return dbname;
@@ -63,5 +59,54 @@ public class DBvalidation {
         }
     }
     
+    public static boolean checkUserPassword(String username,String password)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT password FROM users WHERE username=? AND password=?";
+            
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1,username);
+            ps.setString(2,password);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Error while trying to check for DB password: "+e);
+            System.out.println(e);
+            return false;
+        }
+        finally
+        {
+            if(conn!= null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close conn: "+e);
+                }
+            }
+        }
+    }
     
+    public static String checkRole(String username,String role)
+    {
+        return null;
+    }
 }

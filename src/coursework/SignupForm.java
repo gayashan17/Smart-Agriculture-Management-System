@@ -50,7 +50,7 @@ public class SignupForm extends javax.swing.JFrame {
         txtuname = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         pnlReturn = new javax.swing.JPanel();
-        lblRole5 = new javax.swing.JLabel();
+        lblReturn = new javax.swing.JLabel();
         rbBuyer = new javax.swing.JRadioButton();
         rbFarmer = new javax.swing.JRadioButton();
         rbFO = new javax.swing.JRadioButton();
@@ -63,9 +63,9 @@ public class SignupForm extends javax.swing.JFrame {
         txtfname = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         pnlSignup = new javax.swing.JPanel();
-        lblRole7 = new javax.swing.JLabel();
+        lblSignup = new javax.swing.JLabel();
         pnlClear = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblClear = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,11 +105,11 @@ public class SignupForm extends javax.swing.JFrame {
         });
         pnlReturn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblRole5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblRole5.setForeground(new java.awt.Color(255, 255, 255));
-        lblRole5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRole5.setText("Return");
-        pnlReturn.add(lblRole5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 150, -1));
+        lblReturn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblReturn.setForeground(new java.awt.Color(255, 255, 255));
+        lblReturn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblReturn.setText("Return");
+        pnlReturn.add(lblReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 280, -1));
 
         jPanel2.add(pnlReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, 300, 50));
 
@@ -162,16 +162,11 @@ public class SignupForm extends javax.swing.JFrame {
         });
         pnlSignup.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblRole7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblRole7.setForeground(new java.awt.Color(255, 255, 255));
-        lblRole7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRole7.setText("Sign Up");
-        lblRole7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblRole7MouseClicked(evt);
-            }
-        });
-        pnlSignup.add(lblRole7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 80, -1));
+        lblSignup.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblSignup.setForeground(new java.awt.Color(255, 255, 255));
+        lblSignup.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSignup.setText("Signup");
+        pnlSignup.add(lblSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 280, -1));
 
         jPanel2.add(pnlSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 300, 50));
 
@@ -188,10 +183,10 @@ public class SignupForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Clear");
-        pnlClear.add(jLabel2);
+        lblClear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblClear.setForeground(new java.awt.Color(255, 255, 255));
+        lblClear.setText("Clear");
+        pnlClear.add(lblClear);
 
         jPanel2.add(pnlClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 100, 30));
 
@@ -217,40 +212,126 @@ public class SignupForm extends javax.swing.JFrame {
 
     private void pnlReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturnMouseClicked
 
-        Color color1 = new Color(153,255,255);
-        Color color2 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        Color color1 = new Color(0,153,255);
         Functions.mouseClick(pnlReturn,color1,color2);
         LoginForm form = new LoginForm();
         form.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_pnlReturnMouseClicked
 
-    private void lblRole7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRole7MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblRole7MouseClicked
-
     private void pnlSignupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSignupMouseClicked
-        Color color1 = new Color(153,255,255);
-        Color color2 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        Color color1 = new Color(0,153,255);
         Functions.mouseClick(pnlSignup,color1,color2);
         
         if(txtfname.getText().isEmpty()||txtlname.getText().isEmpty()||txtuname.getText().isEmpty()||txtpw.getText().isEmpty()||txtcpw.getText().isEmpty())
         {
-            lblWarning.setText("Please fill in all fields to continue");
+            lblWarning.setText("Please fill in all fields");
+            lblWarning.setVisible(true);
+        }
+        else if(buttonGroup1.getSelection()==null)
+        {
+            lblWarning.setText("Please Select your account role");
+            lblWarning.setVisible(true);
+        }
+        else if(txtpw.getText().equals(txtcpw.getText())== false)
+        {
+            lblWarning.setText("Passwords does not match");
+            lblWarning.setVisible(true);
+        }
+        else if(txtpw.getText().length()<6)
+        {
+            lblWarning.setText("Password must be atleast 6 characters");
+            lblWarning.setVisible(true);
+        }
+        else
+        {
+            Connection conn = null;
+            
+            try
+            {
+                String fname = txtfname.getText();
+                String name = txtfname.getText()+" "+txtfname.getText();
+                String uname= txtuname.getText();
+                String pw = txtpw.getText();
+                String role = "";
+                if(rbFarmer.isSelected())
+                {
+                    role ="Farmer";
+                }
+                else if(rbFO.isSelected())
+                {
+                    role = "Field Officer";
+                }
+                else if(rbBuyer.isSelected())
+                {
+                    role="Buyer";
+                }
+                try
+                {
+                    String dbname = DBvalidation.checkUser(uname);
+                    if(dbname != null)
+                    {
+                        lblWarning.setText("Username already exsits");
+                        lblWarning.setVisible(true);
+                    }
+                    else
+                    {
+                        conn = DBconnection.getConnection();
+                        
+                        String query ="INSERT into users(name,username,password,role) VALUES(?,?,?,?)";
+                        PreparedStatement ps = conn.prepareStatement(query);
+                        ps.setString(1,name);
+                        ps.setString(2,uname);
+                        ps.setString(3,pw);
+                        ps.setString(4,role);
+                        
+                        ps.executeUpdate();
+                        
+                    }
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(null,"Error while trying to search username: "+e);
+                    System.out.println(e);
+                }
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null,"Error while trying to create Account"+e);
+                System.out.println(e);
+            }
+            finally
+            {
+                if(conn != null)
+                {
+                    try
+                    {
+                      conn.close();  
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("Error while trying to close Connection: "+e);
+                        System.out.println(e);
+                    }
+                    
+                }
+            }
         }
     }//GEN-LAST:event_pnlSignupMouseClicked
 
     private void pnlSignupMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSignupMouseEntered
-        // TODO add your handling code here:
+        pnlSignup.setBackground(new Color(0,204,255)); 
     }//GEN-LAST:event_pnlSignupMouseEntered
 
     private void pnlSignupMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSignupMouseExited
-        // TODO add your handling code here:
+        pnlSignup.setBackground(new Color(0,153,255));
     }//GEN-LAST:event_pnlSignupMouseExited
 
     private void pnlClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlClearMouseClicked
-        Color color1 = new Color(153,255,255);
-        Color color2 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        Color color1 = new Color(0,153,255);
         Functions.mouseClick(pnlClear,color1,color2);
         
         int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear all fields?", "Confirm clear", JOptionPane.YES_NO_OPTION);
@@ -303,7 +384,6 @@ public class SignupForm extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -311,8 +391,9 @@ public class SignupForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblRole5;
-    private javax.swing.JLabel lblRole7;
+    private javax.swing.JLabel lblClear;
+    private javax.swing.JLabel lblReturn;
+    private javax.swing.JLabel lblSignup;
     private javax.swing.JLabel lblWarning;
     private javax.swing.JPanel pnlClear;
     private javax.swing.JPanel pnlReturn;

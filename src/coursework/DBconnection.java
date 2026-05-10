@@ -18,7 +18,6 @@ public class DBconnection {
 
     public static Connection getConnection() throws SQLException {
         try {
-            // Load the driver (optional in newer Java versions, but good practice)
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, user, password);
             

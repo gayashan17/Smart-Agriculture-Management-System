@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/NIBM/EAD/CourseWork/src/coursework/SignupForm.java</file>
-            <file>file:/C:/NIBM/EAD/CourseWork/src/coursework/DBconnection.java</file>
+            <file>file:/C:/NIBM/EAD/CourseWork/Smart-Agriculture-Management-System/src/coursework/SignupForm.java</file>
+            <file>file:/C:/NIBM/EAD/CourseWork/Smart-Agriculture-Management-System/src/coursework/DBconnection.java</file>
+            <file>file:/C:/NIBM/EAD/CourseWork/Smart-Agriculture-Management-System/src/coursework/DBvalidation.java</file>
+            <file>file:/C:/NIBM/EAD/CourseWork/Smart-Agriculture-Management-System/src/coursework/LoginForm.java</file>
         </group>
     </open-files>
 </project-private>
