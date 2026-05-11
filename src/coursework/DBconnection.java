@@ -16,12 +16,16 @@ public class DBconnection {
     private static final String user = "root";
     private static final String password = "";
 
-    public static Connection getConnection() throws SQLException {
-        try {
+    public static Connection getConnection() throws SQLException 
+    {
+        try
+        {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(url, user, password);
             
-        } catch (ClassNotFoundException e) {
+            return DriverManager.getConnection(url, user, password);
+        } 
+        catch (Exception e)
+        {
             throw new SQLException("JDBC Driver not found!"+ e);
         }
     }

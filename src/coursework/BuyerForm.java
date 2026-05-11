@@ -4,6 +4,9 @@
  */
 package coursework;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -11,14 +14,16 @@ package coursework;
 public class BuyerForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BuyerForm.class.getName());
-
+    String username = "";
     /**
      * Creates new form buyerForm
      */
-    public BuyerForm() {
+    public BuyerForm(String username) {
+        this.username = username;
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        lblwelcm.setText("Welcome, "+username);
     }
 
     /**
@@ -65,7 +70,12 @@ public class BuyerForm extends javax.swing.JFrame {
         lblDate.setText("date");
         jPanel2.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, -1));
 
-        pnlLogout.setBackground(new java.awt.Color(0, 204, 255));
+        pnlLogout.setBackground(new java.awt.Color(0, 153, 255));
+        pnlLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlLogoutMouseClicked(evt);
+            }
+        });
         pnlLogout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -76,7 +86,7 @@ public class BuyerForm extends javax.swing.JFrame {
 
         jPanel2.add(pnlLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 110, 40));
 
-        pnlViewCr.setBackground(new java.awt.Color(0, 204, 255));
+        pnlViewCr.setBackground(new java.awt.Color(0, 153, 255));
         pnlViewCr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -86,7 +96,7 @@ public class BuyerForm extends javax.swing.JFrame {
 
         jPanel2.add(pnlViewCr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 360, 50));
 
-        pnlSend.setBackground(new java.awt.Color(0, 204, 255));
+        pnlSend.setBackground(new java.awt.Color(0, 153, 255));
         pnlSend.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -96,7 +106,7 @@ public class BuyerForm extends javax.swing.JFrame {
 
         jPanel2.add(pnlSend, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 360, 50));
 
-        pnlViewRq.setBackground(new java.awt.Color(0, 204, 255));
+        pnlViewRq.setBackground(new java.awt.Color(0, 153, 255));
         pnlViewRq.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -112,6 +122,21 @@ public class BuyerForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pnlLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLogoutMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        
+        Functions.mouseClick(pnlLogout, color1, color2);
+        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to log out", "Log out", JOptionPane.YES_NO_OPTION);
+        
+                if(choice == JOptionPane.YES_OPTION )
+                {
+                    this.dispose();
+                    LoginForm f = new LoginForm();
+                    f.setVisible(true);
+                }
+    }//GEN-LAST:event_pnlLogoutMouseClicked
 
     /**
      * @param args the command line arguments

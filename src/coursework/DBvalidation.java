@@ -99,14 +99,55 @@ public class DBvalidation {
                 }
                 catch(Exception e)
                 {
-                    System.out.println("Error while trying to close conn: "+e);
+                    System.out.println("Error while trying to close connection: "+e);
                 }
             }
         }
     }
     
-    public static String checkRole(String username,String role)
+    public static String checkRole(String username)
     {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT role FROM users WHERE username=?";
+            
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1,username);
+
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                String dbRole = rs.getString("role");
+                return dbRole;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to check user Role: "+e);
+            System.out.println(e);
+        }
+        finally
+        {
+            if(conn!= null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection: "+e);
+                }
+            }
+        }
         return null;
     }
 }

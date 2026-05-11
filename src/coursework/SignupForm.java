@@ -251,8 +251,7 @@ public class SignupForm extends javax.swing.JFrame {
             
             try
             {
-                String fname = txtfname.getText();
-                String name = txtfname.getText()+" "+txtfname.getText();
+                String name = txtfname.getText()+" "+txtlname.getText();
                 String uname= txtuname.getText();
                 String pw = txtpw.getText();
                 String role = "";
@@ -288,6 +287,11 @@ public class SignupForm extends javax.swing.JFrame {
                         ps.setString(4,role);
                         
                         ps.executeUpdate();
+                        
+                        JOptionPane.showMessageDialog(null,"Acction created successfully, Please login");
+                        this.dispose();
+                        LoginForm f = new LoginForm();
+                        f.setVisible(true);
                         
                     }
                 }

@@ -5,6 +5,7 @@
 package coursework;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,7 +14,6 @@ import java.awt.Color;
 public class LoginForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginForm.class.getName());
-    String Role ="";
     
     public LoginForm() {
         initComponents();
@@ -36,16 +36,8 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtuname = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        pnlBuyer = new javax.swing.JPanel();
-        lblRole = new javax.swing.JLabel();
-        lblRole1 = new javax.swing.JLabel();
         pnlCreateAcc = new javax.swing.JPanel();
         lblRole5 = new javax.swing.JLabel();
-        pnlFO = new javax.swing.JPanel();
-        lblRole3 = new javax.swing.JLabel();
-        pnlFarmer = new javax.swing.JPanel();
-        lblRole4 = new javax.swing.JLabel();
         pnlLogin = new javax.swing.JPanel();
         lblRole6 = new javax.swing.JLabel();
         txtpw = new javax.swing.JPasswordField();
@@ -70,36 +62,6 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 100, -1));
         jPanel2.add(txtuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 320, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Role");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 100, -1));
-
-        pnlBuyer.setBackground(new java.awt.Color(0, 204, 255));
-        pnlBuyer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlBuyerMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlBuyerMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlBuyerMouseExited(evt);
-            }
-        });
-        pnlBuyer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblRole.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblRole.setForeground(new java.awt.Color(255, 255, 255));
-        lblRole.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRole.setText("Buyer");
-        pnlBuyer.add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 60, -1));
-
-        jPanel2.add(pnlBuyer, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 100, 40));
-
-        lblRole1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblRole1.setText("Please select a role from below to continue");
-        jPanel2.add(lblRole1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 310, -1));
-
         pnlCreateAcc.setBackground(new java.awt.Color(0, 153, 255));
         pnlCreateAcc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,51 +82,7 @@ public class LoginForm extends javax.swing.JFrame {
         lblRole5.setText("Create Account");
         pnlCreateAcc.add(lblRole5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 150, -1));
 
-        jPanel2.add(pnlCreateAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 300, 50));
-
-        pnlFO.setBackground(new java.awt.Color(0, 204, 255));
-        pnlFO.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlFOMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlFOMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlFOMouseExited(evt);
-            }
-        });
-        pnlFO.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblRole3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblRole3.setForeground(new java.awt.Color(255, 255, 255));
-        lblRole3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRole3.setText("Field Officer");
-        pnlFO.add(lblRole3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 100, -1));
-
-        jPanel2.add(pnlFO, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 100, 40));
-
-        pnlFarmer.setBackground(new java.awt.Color(0, 204, 255));
-        pnlFarmer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlFarmerMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlFarmerMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlFarmerMouseExited(evt);
-            }
-        });
-        pnlFarmer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblRole4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblRole4.setForeground(new java.awt.Color(255, 255, 255));
-        lblRole4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRole4.setText("Farmer");
-        pnlFarmer.add(lblRole4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 60, -1));
-
-        jPanel2.add(pnlFarmer, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 100, 40));
+        jPanel2.add(pnlCreateAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 300, 50));
 
         pnlLogin.setBackground(new java.awt.Color(0, 153, 255));
         pnlLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,7 +104,7 @@ public class LoginForm extends javax.swing.JFrame {
         lblRole6.setText("Log in");
         pnlLogin.add(lblRole6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 60, -1));
 
-        jPanel2.add(pnlLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 300, 50));
+        jPanel2.add(pnlLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 300, 50));
         jPanel2.add(txtpw, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 320, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -197,11 +115,11 @@ public class LoginForm extends javax.swing.JFrame {
         lblWarning.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblWarning.setForeground(new java.awt.Color(255, 0, 0));
         lblWarning.setText("invalid text here");
-        jPanel2.add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 320, -1));
+        jPanel2.add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 320, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 440, 510));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 440, 410));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 510));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -214,10 +132,6 @@ public class LoginForm extends javax.swing.JFrame {
         if(txtuname.getText().isEmpty()||txtpw.getText().isEmpty())
         {
             lblWarning.setText("Please fill in all fields to continue");
-        }
-        else if(Role == "")
-        {
-            lblWarning.setText("Please select your account Role");
             lblWarning.setVisible(true);
         }
         else if(DBvalidation.checkUserPassword(txtuname.getText(), txtpw.getText())== false)
@@ -227,7 +141,29 @@ public class LoginForm extends javax.swing.JFrame {
         }
         else
         {
-            System.out.println("pass");
+            String dbRole = DBvalidation.checkRole(txtuname.getText());
+            if(dbRole.equals("Farmer"))
+            {
+                this.dispose();
+                FarmerForm f = new FarmerForm(txtuname.getText());
+                f.setVisible(true);
+            }
+            else if(dbRole.equals("Field Officer"))
+            {
+                this.dispose();
+                FieldOfficerForm f = new FieldOfficerForm();
+                f.setVisible(true);
+            }
+            else if(dbRole.equals("Buyer"))
+            {
+                this.dispose();
+                BuyerForm f = new BuyerForm();
+                f.setVisible(true);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Invalid Role in Database");
+            }
         }
         
     }//GEN-LAST:event_pnlLoginMouseClicked
@@ -259,51 +195,6 @@ public class LoginForm extends javax.swing.JFrame {
         pnlCreateAcc.setBackground(new Color(0,153,255));
     }//GEN-LAST:event_pnlCreateAccMouseExited
 
-    private void pnlFarmerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmerMouseClicked
-        Color color1 = new Color(0,204,255);
-        Color color2 = new Color(153,255,255);
-        Functions.mouseClick(pnlFarmer,color1,color2);
-        Role = "Farmer";
-    }//GEN-LAST:event_pnlFarmerMouseClicked
-
-    private void pnlFarmerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmerMouseEntered
-        pnlFarmer.setBackground(new Color(102,153,255));
-    }//GEN-LAST:event_pnlFarmerMouseEntered
-
-    private void pnlFarmerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmerMouseExited
-        pnlFarmer.setBackground(new Color(0,204,255));
-    }//GEN-LAST:event_pnlFarmerMouseExited
-
-    private void pnlFOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFOMouseClicked
-        Color color1 = new Color(0,204,255);
-        Color color2 = new Color(153,255,255);
-        Functions.mouseClick(pnlFO,color1,color2);
-        Role = "Field Officer";
-    }//GEN-LAST:event_pnlFOMouseClicked
-
-    private void pnlFOMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFOMouseEntered
-        pnlFO.setBackground(new Color(102,153,255));
-    }//GEN-LAST:event_pnlFOMouseEntered
-
-    private void pnlFOMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFOMouseExited
-        pnlFO.setBackground(new Color(0,204,255));
-    }//GEN-LAST:event_pnlFOMouseExited
-
-    private void pnlBuyerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBuyerMouseClicked
-        Color color1 = new Color(0,204,255);
-        Color color2 = new Color(153,255,255);
-        Functions.mouseClick(pnlBuyer,color1,color2);
-        Role = "Buyer";
-    }//GEN-LAST:event_pnlBuyerMouseClicked
-
-    private void pnlBuyerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBuyerMouseEntered
-        pnlBuyer.setBackground(new Color(102,153,255));
-    }//GEN-LAST:event_pnlBuyerMouseEntered
-
-    private void pnlBuyerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBuyerMouseExited
-        pnlBuyer.setBackground(new Color(0,204,255));
-    }//GEN-LAST:event_pnlBuyerMouseExited
-
     /**
      * @param args the command line arguments
      */
@@ -333,20 +224,12 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblRole;
-    private javax.swing.JLabel lblRole1;
-    private javax.swing.JLabel lblRole3;
-    private javax.swing.JLabel lblRole4;
     private javax.swing.JLabel lblRole5;
     private javax.swing.JLabel lblRole6;
     private javax.swing.JLabel lblWarning;
-    private javax.swing.JPanel pnlBuyer;
     private javax.swing.JPanel pnlCreateAcc;
-    private javax.swing.JPanel pnlFO;
-    private javax.swing.JPanel pnlFarmer;
     private javax.swing.JPanel pnlLogin;
     private javax.swing.JPasswordField txtpw;
     private javax.swing.JTextField txtuname;

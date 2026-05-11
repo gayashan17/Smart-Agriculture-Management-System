@@ -4,6 +4,9 @@
  */
 package coursework;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -11,14 +14,17 @@ package coursework;
 public class FarmerForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FarmerForm.class.getName());
-
+    String username= "";
+    
     /**
      * Creates new form officerForm
      */
-    public FarmerForm() {
+    public FarmerForm(String username) {
+        this.username = username;
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        lblwelcm.setText("Welcome, "+username);
     }
 
     /**
@@ -65,7 +71,12 @@ public class FarmerForm extends javax.swing.JFrame {
         lbldate.setText("date");
         jPanel2.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, -1));
 
-        pnlAdd.setBackground(new java.awt.Color(0, 204, 255));
+        pnlAdd.setBackground(new java.awt.Color(0, 153, 255));
+        pnlAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlAddMouseClicked(evt);
+            }
+        });
         pnlAdd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -75,7 +86,12 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jPanel2.add(pnlAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 360, 50));
 
-        pnlViewCr.setBackground(new java.awt.Color(0, 204, 255));
+        pnlViewCr.setBackground(new java.awt.Color(0, 153, 255));
+        pnlViewCr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlViewCrMouseClicked(evt);
+            }
+        });
         pnlViewCr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -85,7 +101,12 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jPanel2.add(pnlViewCr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 360, 50));
 
-        pnlViewRec.setBackground(new java.awt.Color(0, 204, 255));
+        pnlViewRec.setBackground(new java.awt.Color(0, 153, 255));
+        pnlViewRec.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlViewRecMouseClicked(evt);
+            }
+        });
         pnlViewRec.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -95,7 +116,12 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jPanel2.add(pnlViewRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 360, 50));
 
-        pnlLogout.setBackground(new java.awt.Color(0, 204, 255));
+        pnlLogout.setBackground(new java.awt.Color(0, 153, 255));
+        pnlLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlLogoutMouseClicked(evt);
+            }
+        });
         pnlLogout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -112,6 +138,43 @@ public class FarmerForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pnlLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLogoutMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        
+        Functions.mouseClick(pnlViewCr, color1, color2);
+        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to log out", "Log out", JOptionPane.YES_NO_OPTION);
+        
+                if(choice == JOptionPane.YES_OPTION )
+                {
+                    this.dispose();
+                    LoginForm f = new LoginForm();
+                    f.setVisible(true);
+                }
+        
+    }//GEN-LAST:event_pnlLogoutMouseClicked
+
+    private void pnlAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        
+        Functions.mouseClick(pnlAdd, color1, color2);
+    }//GEN-LAST:event_pnlAddMouseClicked
+
+    private void pnlViewCrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCrMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        
+        Functions.mouseClick(pnlViewCr, color1, color2);
+    }//GEN-LAST:event_pnlViewCrMouseClicked
+
+    private void pnlViewRecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewRecMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        
+        Functions.mouseClick(pnlViewRec, color1, color2);        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlViewRecMouseClicked
 
     /**
      * @param args the command line arguments
