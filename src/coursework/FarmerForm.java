@@ -76,6 +76,12 @@ public class FarmerForm extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlAddMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlAddMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlAddMouseExited(evt);
+            }
         });
         pnlAdd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -90,6 +96,12 @@ public class FarmerForm extends javax.swing.JFrame {
         pnlViewCr.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlViewCrMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlViewCrMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlViewCrMouseExited(evt);
             }
         });
         pnlViewCr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,6 +118,12 @@ public class FarmerForm extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlViewRecMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlViewRecMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlViewRecMouseExited(evt);
+            }
         });
         pnlViewRec.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -120,6 +138,12 @@ public class FarmerForm extends javax.swing.JFrame {
         pnlLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlLogoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlLogoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlLogoutMouseExited(evt);
             }
         });
         pnlLogout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -143,7 +167,7 @@ public class FarmerForm extends javax.swing.JFrame {
         Color color1 = new Color(0,153,255);
         Color color2 = new Color(153,255,255);
         
-        Functions.mouseClick(pnlViewCr, color1, color2);
+        Functions.mouseClick(pnlLogout, color1, color2);
         int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to log out", "Log out", JOptionPane.YES_NO_OPTION);
         
                 if(choice == JOptionPane.YES_OPTION )
@@ -175,6 +199,38 @@ public class FarmerForm extends javax.swing.JFrame {
         
         Functions.mouseClick(pnlViewRec, color1, color2);        // TODO add your handling code here:
     }//GEN-LAST:event_pnlViewRecMouseClicked
+
+    private void pnlAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseEntered
+        pnlAdd.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlAddMouseEntered
+
+    private void pnlViewCrMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCrMouseEntered
+        pnlViewCr.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlViewCrMouseEntered
+
+    private void pnlViewRecMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewRecMouseEntered
+        pnlViewRec.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlViewRecMouseEntered
+
+    private void pnlLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLogoutMouseEntered
+        pnlLogout.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlLogoutMouseEntered
+
+    private void pnlAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseExited
+        pnlAdd.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlAddMouseExited
+
+    private void pnlViewCrMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCrMouseExited
+        pnlViewCr.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlViewCrMouseExited
+
+    private void pnlViewRecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewRecMouseExited
+        pnlViewRec.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlViewRecMouseExited
+
+    private void pnlLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLogoutMouseExited
+        pnlLogout.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlLogoutMouseExited
 
     /**
      * @param args the command line arguments

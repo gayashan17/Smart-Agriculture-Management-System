@@ -75,6 +75,9 @@ public class FieldOfficerForm extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLogoutMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseEntered(evt);
+            }
         });
         lblLogout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -87,6 +90,17 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         jPanel2.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 110, 40));
 
         pnlView.setBackground(new java.awt.Color(0, 153, 255));
+        pnlView.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlViewMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlViewMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlViewMouseExited(evt);
+            }
+        });
         pnlView.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -97,6 +111,17 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         jPanel2.add(pnlView, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 360, 50));
 
         pnlUpdate.setBackground(new java.awt.Color(0, 153, 255));
+        pnlUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlUpdateMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlUpdateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlUpdateMouseExited(evt);
+            }
+        });
         pnlUpdate.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -107,6 +132,17 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         jPanel2.add(pnlUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 360, 50));
 
         pnlAdd.setBackground(new java.awt.Color(0, 153, 255));
+        pnlAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlAddMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlAddMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlAddMouseExited(evt);
+            }
+        });
         pnlAdd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -138,6 +174,55 @@ public class FieldOfficerForm extends javax.swing.JFrame {
                     f.setVisible(true);
                 }
     }//GEN-LAST:event_lblLogoutMouseClicked
+
+    private void pnlViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewMouseClicked
+        Color color1 = new Color(153,255,255);
+        Color color2 = new Color(0,153,255);
+        
+        Functions.mouseClick(pnlView, color1, color2);
+    }//GEN-LAST:event_pnlViewMouseClicked
+
+    private void pnlUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateMouseClicked
+        Color color1 = new Color(153,255,255);
+        Color color2 = new Color(0,153,255);
+        
+        Functions.mouseClick(pnlUpdate, color1, color2);
+    }//GEN-LAST:event_pnlUpdateMouseClicked
+
+    private void pnlAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseClicked
+        Color color1 = new Color(153,255,255);
+        Color color2 = new Color(0,153,255);
+        
+        Functions.mouseClick(pnlAdd, color1, color2);
+    }//GEN-LAST:event_pnlAddMouseClicked
+
+    private void pnlViewMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewMouseEntered
+        pnlView.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlViewMouseEntered
+
+    private void pnlUpdateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateMouseEntered
+        pnlUpdate.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlUpdateMouseEntered
+
+    private void pnlAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseEntered
+        pnlAdd.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlAddMouseEntered
+
+    private void lblLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseEntered
+        lblLogout.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_lblLogoutMouseEntered
+
+    private void pnlViewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewMouseExited
+        pnlView.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlViewMouseExited
+
+    private void pnlUpdateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateMouseExited
+        pnlUpdate.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlUpdateMouseExited
+
+    private void pnlAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseExited
+        pnlAdd.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlAddMouseExited
 
     /**
      * @param args the command line arguments

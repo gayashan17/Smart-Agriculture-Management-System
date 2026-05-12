@@ -87,6 +87,14 @@ public class BuyerForm extends javax.swing.JFrame {
         jPanel2.add(pnlLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 110, 40));
 
         pnlViewCr.setBackground(new java.awt.Color(0, 153, 255));
+        pnlViewCr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlViewCrMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlViewCrMouseEntered(evt);
+            }
+        });
         pnlViewCr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -97,6 +105,14 @@ public class BuyerForm extends javax.swing.JFrame {
         jPanel2.add(pnlViewCr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 360, 50));
 
         pnlSend.setBackground(new java.awt.Color(0, 153, 255));
+        pnlSend.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlSendMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlSendMouseEntered(evt);
+            }
+        });
         pnlSend.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -107,6 +123,11 @@ public class BuyerForm extends javax.swing.JFrame {
         jPanel2.add(pnlSend, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 360, 50));
 
         pnlViewRq.setBackground(new java.awt.Color(0, 153, 255));
+        pnlViewRq.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlViewRqMouseClicked(evt);
+            }
+        });
         pnlViewRq.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -137,6 +158,35 @@ public class BuyerForm extends javax.swing.JFrame {
                     f.setVisible(true);
                 }
     }//GEN-LAST:event_pnlLogoutMouseClicked
+
+    private void pnlViewCrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCrMouseClicked
+        Color color1 = new Color(153,255,255);
+        Color color2 = new Color(0,153,255);
+        
+        Functions.mouseClick(pnlViewCr, color1, color2);
+    }//GEN-LAST:event_pnlViewCrMouseClicked
+
+    private void pnlSendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSendMouseClicked
+        Color color1 = new Color(153,255,255);
+        Color color2 = new Color(0,153,255);
+        
+        Functions.mouseClick(pnlSend, color1, color2);
+    }//GEN-LAST:event_pnlSendMouseClicked
+
+    private void pnlViewRqMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewRqMouseClicked
+        Color color1 = new Color(153,255,255);
+        Color color2 = new Color(0,153,255);
+        
+        Functions.mouseClick(pnlViewRq, color1, color2);
+    }//GEN-LAST:event_pnlViewRqMouseClicked
+
+    private void pnlViewCrMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCrMouseEntered
+        pnlViewCr.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlViewCrMouseEntered
+
+    private void pnlSendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSendMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlSendMouseEntered
 
     /**
      * @param args the command line arguments
