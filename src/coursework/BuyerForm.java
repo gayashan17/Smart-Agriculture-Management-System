@@ -94,6 +94,9 @@ public class BuyerForm extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlViewCrMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlViewCrMouseExited(evt);
+            }
         });
         pnlViewCr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -112,6 +115,9 @@ public class BuyerForm extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlSendMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlSendMouseExited(evt);
+            }
         });
         pnlSend.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -126,6 +132,12 @@ public class BuyerForm extends javax.swing.JFrame {
         pnlViewRq.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlViewRqMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlViewRqMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlViewRqMouseExited(evt);
             }
         });
         pnlViewRq.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -185,8 +197,24 @@ public class BuyerForm extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlViewCrMouseEntered
 
     private void pnlSendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSendMouseEntered
-        // TODO add your handling code here:
+        pnlSend.setBackground(new Color(0,204,255));
     }//GEN-LAST:event_pnlSendMouseEntered
+
+    private void pnlViewRqMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewRqMouseEntered
+        pnlViewRq.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlViewRqMouseEntered
+
+    private void pnlViewCrMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCrMouseExited
+        pnlViewCr.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlViewCrMouseExited
+
+    private void pnlSendMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSendMouseExited
+        pnlSend.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlSendMouseExited
+
+    private void pnlViewRqMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewRqMouseExited
+        pnlViewRq.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlViewRqMouseExited
 
     /**
      * @param args the command line arguments
