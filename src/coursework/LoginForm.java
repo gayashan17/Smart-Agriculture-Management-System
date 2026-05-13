@@ -132,6 +132,7 @@ public class LoginForm extends javax.swing.JFrame {
         else
         {
             String dbRole = DBvalidation.checkRole(txtuname.getText());
+            String username = txtuname.getText();
             if(dbRole.equals("Farmer"))
             {
                 this.dispose();
@@ -154,6 +155,7 @@ public class LoginForm extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null, "Invalid Role in Database");
             }
+            UserDetails details = new UserDetails(username,dbRole);
         }
         
     }//GEN-LAST:event_pnlLoginMouseClicked
@@ -167,6 +169,7 @@ public class LoginForm extends javax.swing.JFrame {
         this.dispose();
         SignupForm f1 = new SignupForm();
         f1.setVisible(true);
+        
     }//GEN-LAST:event_pnlCreateAccMouseClicked
 
     private void pnlLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLoginMouseEntered

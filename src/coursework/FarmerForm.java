@@ -26,6 +26,13 @@ public class FarmerForm extends javax.swing.JFrame {
         setResizable(false);
         lblwelcm.setText("Welcome, "+username);
     }
+    public FarmerForm()
+    {
+        
+    }
+    
+    public String getUsername (){return username;}
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +45,6 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         lblwelcm = new javax.swing.JLabel();
         lbldate = new javax.swing.JLabel();
         pnlAdd = new javax.swing.JPanel();
@@ -59,17 +65,13 @@ public class FarmerForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("lets get farmin!");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 61, 200, -1));
-
         lblwelcm.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblwelcm.setText("Welcome! (name)");
         jPanel2.add(lblwelcm, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, -1, -1));
 
         lbldate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbldate.setText("date");
-        jPanel2.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, -1));
+        jPanel2.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         pnlAdd.setBackground(new java.awt.Color(0, 153, 255));
         pnlAdd.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,7 +178,6 @@ public class FarmerForm extends javax.swing.JFrame {
                     LoginForm f = new LoginForm();
                     f.setVisible(true);
                 }
-        
     }//GEN-LAST:event_pnlLogoutMouseClicked
 
     private void pnlAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseClicked
@@ -184,6 +185,11 @@ public class FarmerForm extends javax.swing.JFrame {
         Color color2 = new Color(153,255,255);
         
         Functions.mouseClick(pnlAdd, color1, color2);
+        
+        AddCropForm f = new AddCropForm ();
+        f.setVisible(true);
+        
+        
     }//GEN-LAST:event_pnlAddMouseClicked
 
     private void pnlViewCrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCrMouseClicked
@@ -258,7 +264,6 @@ public class FarmerForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

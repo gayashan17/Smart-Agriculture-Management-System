@@ -150,4 +150,52 @@ public class DBvalidation {
         }
         return null;
     }
+    
+    public static int checkId(String username)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT id FROM users WHERE username=?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1,username);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                String id = rs.getString("id");
+                
+                int dbId = Integer.parseInt(id);
+                return dbId;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to check user ID: "+e);
+            System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection: "+e);
+                }
+            }
+            
+        }
+        return 0;
+    }
 }
