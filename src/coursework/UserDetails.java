@@ -9,17 +9,16 @@ package coursework;
  * @author User
  */
 public class UserDetails {
-    private String username;
-    private String role;
+    private static String username;
+    private static String role;
     
     public UserDetails(String username,String role)
     {
         this.username = username;
         this.role = role;
     }
-    public UserDetails(){}
     
-    public String getUsername(){return username;}
-    public String getRole(){return role;}
+    public static String getUsername(){return username;}
+    public static String getRole(){return role;}
           
 }

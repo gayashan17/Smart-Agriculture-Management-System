@@ -21,18 +21,23 @@ public class LoginForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txtuname = new javax.swing.JTextField();
-        pnlCreateAcc = new javax.swing.JPanel();
-        lblRole5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtpw = new javax.swing.JPasswordField();
+        lblWarning = new javax.swing.JLabel();
         pnlLogin = new javax.swing.JPanel();
         lblRole6 = new javax.swing.JLabel();
-        txtpw = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        lblWarning = new javax.swing.JLabel();
+        pnlCreateAcc = new javax.swing.JPanel();
+        lblRole5 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -43,36 +48,29 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Login");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 160, -1));
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Username");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 100, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 100, -1));
+        jPanel3.add(txtuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 320, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Password");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 100, -1));
-        jPanel2.add(txtuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 320, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 100, -1));
+        jPanel3.add(txtpw, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 320, -1));
 
-        pnlCreateAcc.setBackground(new java.awt.Color(0, 153, 255));
-        pnlCreateAcc.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlCreateAccMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlCreateAccMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlCreateAccMouseExited(evt);
-            }
-        });
-        pnlCreateAcc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblRole5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblRole5.setForeground(new java.awt.Color(255, 255, 255));
-        lblRole5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRole5.setText("Create Account");
-        pnlCreateAcc.add(lblRole5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 150, -1));
-
-        jPanel2.add(pnlCreateAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 300, 50));
+        lblWarning.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
+        lblWarning.setText("invalid text here");
+        jPanel3.add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 320, -1));
 
         pnlLogin.setBackground(new java.awt.Color(0, 153, 255));
         pnlLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,20 +92,37 @@ public class LoginForm extends javax.swing.JFrame {
         lblRole6.setText("Log in");
         pnlLogin.add(lblRole6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 60, -1));
 
-        jPanel2.add(pnlLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 300, 50));
-        jPanel2.add(txtpw, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 320, -1));
+        jPanel3.add(pnlLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 300, 50));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Login");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 160, -1));
+        pnlCreateAcc.setBackground(new java.awt.Color(0, 153, 255));
+        pnlCreateAcc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlCreateAccMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlCreateAccMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlCreateAccMouseExited(evt);
+            }
+        });
+        pnlCreateAcc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblWarning.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        lblWarning.setText("invalid text here");
-        jPanel2.add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 320, -1));
+        lblRole5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblRole5.setForeground(new java.awt.Color(255, 255, 255));
+        lblRole5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRole5.setText("Create Account");
+        pnlCreateAcc.add(lblRole5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 150, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 440, 410));
+        jPanel3.add(pnlCreateAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 300, 50));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, -10, 370, 420));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setText("Welcome to FarmSphere");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 840, 410));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, -1));
 
@@ -133,29 +148,29 @@ public class LoginForm extends javax.swing.JFrame {
         {
             String dbRole = DBvalidation.checkRole(txtuname.getText());
             String username = txtuname.getText();
+            UserDetails details = new UserDetails(username,dbRole);
             if(dbRole.equals("Farmer"))
             {
                 this.dispose();
-                FarmerForm f = new FarmerForm(txtuname.getText());
+                FarmerForm f = new FarmerForm();
                 f.setVisible(true);
             }
             else if(dbRole.equals("Field Officer"))
             {
                 this.dispose();
-                FieldOfficerForm f = new FieldOfficerForm(txtuname.getText());
+                FieldOfficerForm f = new FieldOfficerForm();
                 f.setVisible(true);
             }
             else if(dbRole.equals("Buyer"))
             {
                 this.dispose();
-                BuyerForm f = new BuyerForm(txtuname.getText());
+                BuyerForm f = new BuyerForm();
                 f.setVisible(true);
             }
             else
             {
                 JOptionPane.showMessageDialog(null, "Invalid Role in Database");
             }
-            UserDetails details = new UserDetails(username,dbRole);
         }
         
     }//GEN-LAST:event_pnlLoginMouseClicked
@@ -214,11 +229,14 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblRole5;
     private javax.swing.JLabel lblRole6;
     private javax.swing.JLabel lblWarning;

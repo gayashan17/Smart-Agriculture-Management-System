@@ -21,6 +21,7 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        DBdisplaytable.loadIntoTable(tblCrops);
     }
 
     /**
@@ -34,13 +35,23 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        lblwelcm = new javax.swing.JLabel();
+        lblFilters = new javax.swing.JLabel();
         pnlAdd = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        pnlReturn = new javax.swing.JPanel();
+        pnlFilterByName = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCrops = new javax.swing.JTable();
+        pnlReturn = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        pnlFilterSearch = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        filterByStatus = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        lblwelcm1 = new javax.swing.JLabel();
+        lblFilters1 = new javax.swing.JLabel();
+        comboStatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,9 +62,9 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblwelcm.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblwelcm.setText("View Crops");
-        jPanel3.add(lblwelcm, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
+        lblFilters.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblFilters.setText("Search by Crop Name");
+        jPanel3.add(lblFilters, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 180, -1));
 
         pnlAdd.setBackground(new java.awt.Color(0, 153, 255));
         pnlAdd.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,7 +86,52 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
         jLabel4.setText("Add");
         pnlAdd.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        jPanel3.add(pnlAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 480, 110, 40));
+        jPanel3.add(pnlAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 490, 110, 40));
+
+        pnlFilterByName.setBackground(new java.awt.Color(0, 153, 255));
+        pnlFilterByName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlFilterByNameMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlFilterByNameMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlFilterByNameMouseExited(evt);
+            }
+        });
+        pnlFilterByName.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Your Crops");
+        pnlFilterByName.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, -1));
+
+        jPanel3.add(pnlFilterByName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 110, 40));
+
+        tblCrops.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Crop ID", "Farmer ID", "Crop Name", "Category", "Planting Date", "Harvest Date", "Land Size", "Quantity", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblCrops);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 770, 210));
 
         pnlReturn.setBackground(new java.awt.Color(0, 153, 255));
         pnlReturn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,28 +147,69 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
         });
         pnlReturn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Return");
-        pnlReturn.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Return");
+        pnlReturn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        jPanel3.add(pnlReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 110, 40));
+        jPanel3.add(pnlReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 490, 110, 40));
 
-        tblCrops.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Crop Name", "Quantity", "Unit Price", "Farmer"
+        pnlFilterSearch.setBackground(new java.awt.Color(0, 153, 255));
+        pnlFilterSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlFilterSearchMouseClicked(evt);
             }
-        ));
-        jScrollPane1.setViewportView(tblCrops);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlFilterSearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlFilterSearchMouseExited(evt);
+            }
+        });
+        pnlFilterSearch.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 700, 210));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Search");
+        pnlFilterSearch.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, -1));
+
+        jPanel3.add(pnlFilterSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 350, 110, 40));
+
+        filterByStatus.setBackground(new java.awt.Color(0, 153, 255));
+        filterByStatus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                filterByStatusMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                filterByStatusMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                filterByStatusMouseExited(evt);
+            }
+        });
+        filterByStatus.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Status");
+        filterByStatus.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, -1));
+
+        jPanel3.add(filterByStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 110, 40));
+        jPanel3.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 210, -1));
+
+        lblwelcm1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblwelcm1.setText("View Crops");
+        jPanel3.add(lblwelcm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
+
+        lblFilters1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblFilters1.setText("Filters");
+        jPanel3.add(lblFilters1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 180, -1));
+
+        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select--", "Growing", "Ready to harvest", "Damaged", "Harvested" }));
+        jPanel3.add(comboStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 110, -1));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 870, 550));
 
@@ -121,23 +218,21 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pnlReturnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturnMouseExited
-        pnlReturn.setBackground(new Color(0,153,255));
-    }//GEN-LAST:event_pnlReturnMouseExited
+    private void pnlFilterByNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFilterByNameMouseExited
+        pnlFilterByName.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlFilterByNameMouseExited
 
-    private void pnlReturnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturnMouseEntered
-        pnlReturn.setBackground(new Color(0,204,255));
-    }//GEN-LAST:event_pnlReturnMouseEntered
+    private void pnlFilterByNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFilterByNameMouseEntered
+        pnlFilterByName.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlFilterByNameMouseEntered
 
-    private void pnlReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturnMouseClicked
+    private void pnlFilterByNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFilterByNameMouseClicked
         Color color1 = new Color(0,153,255);
         Color color2 = new Color(153,255,255);
 
-        Functions.mouseClick(pnlReturn, color1, color2);
-        this.dispose();
-        AddCropForm f = new AddCropForm();
-        f.setVisible(true);
-    }//GEN-LAST:event_pnlReturnMouseClicked
+        Functions.mouseClick(pnlFilterByName, color1, color2);
+        DBdisplaytable.loadIntoTableUID(tblCrops);
+    }//GEN-LAST:event_pnlFilterByNameMouseClicked
 
     private void pnlAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseExited
         pnlAdd.setBackground(new Color(0,153,255));
@@ -152,8 +247,63 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
         Color color2 = new Color(153,255,255);
 
         Functions.mouseClick(pnlAdd, color1, color2);
+        
+        AddCropForm form = new AddCropForm();
+        form.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_pnlAddMouseClicked
+
+    private void pnlReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturnMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+
+        Functions.mouseClick(pnlReturn, color1, color2);
+        this.dispose();
+    }//GEN-LAST:event_pnlReturnMouseClicked
+
+    private void pnlReturnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturnMouseEntered
+        pnlReturn.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlReturnMouseEntered
+
+    private void pnlReturnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturnMouseExited
+        pnlReturn.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlReturnMouseExited
+
+    private void pnlFilterSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFilterSearchMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+
+        Functions.mouseClick(pnlFilterSearch, color1, color2);
+        
+        String search = txtSearch.getText().trim();
+        DBdisplaytable.loadIntoTableSearch(tblCrops,search);
+    }//GEN-LAST:event_pnlFilterSearchMouseClicked
+
+    private void pnlFilterSearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFilterSearchMouseEntered
+        pnlFilterSearch.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlFilterSearchMouseEntered
+
+    private void pnlFilterSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFilterSearchMouseExited
+        pnlFilterSearch.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlFilterSearchMouseExited
+
+    private void filterByStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filterByStatusMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+
+        Functions.mouseClick(filterByStatus, color1, color2);
+        DBdisplaytable.loadIntoTableStatus(tblCrops,comboStatus.getSelectedItem().toString());
+        
+    }//GEN-LAST:event_filterByStatusMouseClicked
+
+    private void filterByStatusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filterByStatusMouseEntered
+        filterByStatus.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_filterByStatusMouseEntered
+
+    private void filterByStatusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filterByStatusMouseExited
+        filterByStatus.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_filterByStatusMouseExited
 
     /**
      * @param args the command line arguments
@@ -181,14 +331,24 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboStatus;
+    private javax.swing.JPanel filterByStatus;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblwelcm;
+    private javax.swing.JLabel lblFilters;
+    private javax.swing.JLabel lblFilters1;
+    private javax.swing.JLabel lblwelcm1;
     private javax.swing.JPanel pnlAdd;
+    private javax.swing.JPanel pnlFilterByName;
+    private javax.swing.JPanel pnlFilterSearch;
     private javax.swing.JPanel pnlReturn;
     private javax.swing.JTable tblCrops;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

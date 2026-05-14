@@ -21,11 +21,14 @@ public class AddCropForm extends javax.swing.JFrame {
     /**
      * Creates new form AddCropForm
      */
+
     public AddCropForm() {
         initComponents();
         lblWarning.setVisible(false);
         setLocationRelativeTo(null);
         setResizable(false);
+        
+        
     }
 
     /**
@@ -183,7 +186,7 @@ public class AddCropForm extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 790, 560));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 560));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -232,7 +235,7 @@ public class AddCropForm extends javax.swing.JFrame {
         else
         {
             Connection conn = null;
-            UserDetails details = new UserDetails();
+            
             try
             {
                 String crop = txtCrName.getText();
@@ -247,13 +250,14 @@ public class AddCropForm extends javax.swing.JFrame {
                 Date harvestDate = Date.valueOf(localHarvestDate);
                 
                 
+                
                 conn = DBconnection.getConnection();
                 
-                String query = "INSERT INTO crops (farmerId,crop_name,category,planting_date,harvest_date,land_size,quantity,status)VALUES(?,?,?,?,?,?,?,?)";
+                String query = "INSERT INTO crops (farmer_id,crop_name,category,planting_date,harvest_date,land_size,quantity,status)VALUES(?,?,?,?,?,?,?,?)";
                 
                 PreparedStatement ps = conn.prepareStatement(query);
-                ps.setInt(1,DBvalidation.checkId(details.getUsername()));
                 
+                ps.setInt(1,DBvalidation.checkId(UserDetails.getUsername()));
                 ps.setString(2,crop);
                 ps.setString(3,category);
                 ps.setDate(4,plantDate);
@@ -264,12 +268,15 @@ public class AddCropForm extends javax.swing.JFrame {
                 
                 ps.executeUpdate();
                 
+                
             }
             catch(Exception e)
             {
                 if(conn != null)
                 {
                     JOptionPane.showMessageDialog(null,"Error while trying to add Crop data into database: "+e);
+                    System.out.println(e);
+                    System.out.println(UserDetails.getUsername()+""+DBvalidation.checkId(UserDetails.getUsername()));
                 }
             }
         }

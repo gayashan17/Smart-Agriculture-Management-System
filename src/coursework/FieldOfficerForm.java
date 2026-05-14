@@ -14,16 +14,14 @@ import javax.swing.JOptionPane;
 public class FieldOfficerForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FieldOfficerForm.class.getName());
-    String username="";
     /**
      * Creates new form farmerForm
      */
-    public FieldOfficerForm(String username) {
-        this.username = username;
+    public FieldOfficerForm() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        lblwelcm.setText("Welcome, "+username);
+        lblwelcm.setText("Welcome, "+UserDetails.getUsername());
     }
 
     /**

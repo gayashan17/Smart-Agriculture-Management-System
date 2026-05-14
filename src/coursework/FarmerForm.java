@@ -14,24 +14,17 @@ import javax.swing.JOptionPane;
 public class FarmerForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FarmerForm.class.getName());
-    String username= "";
     
     /**
      * Creates new form officerForm
      */
-    public FarmerForm(String username) {
-        this.username = username;
+    public FarmerForm() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        lblwelcm.setText("Welcome, "+username);
-    }
-    public FarmerForm()
-    {
-        
+        lblwelcm.setText("Welcome, "+UserDetails.getUsername());
     }
     
-    public String getUsername (){return username;}
    
 
     /**
@@ -197,6 +190,9 @@ public class FarmerForm extends javax.swing.JFrame {
         Color color2 = new Color(153,255,255);
         
         Functions.mouseClick(pnlViewCr, color1, color2);
+        
+        ViewCropsFarmerForm f = new ViewCropsFarmerForm();
+        f.setVisible(true);
     }//GEN-LAST:event_pnlViewCrMouseClicked
 
     private void pnlViewRecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewRecMouseClicked

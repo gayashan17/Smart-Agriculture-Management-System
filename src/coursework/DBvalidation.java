@@ -8,8 +8,11 @@ package coursework;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+
+import javax.swing.table.*;
 public class DBvalidation {
     
     public static String checkUser(String username)
@@ -166,9 +169,7 @@ public class DBvalidation {
             
             if(rs.next())
             {
-                String id = rs.getString("id");
-                
-                int dbId = Integer.parseInt(id);
+                int dbId = rs.getInt("id");
                 return dbId;
             }
             else
@@ -198,4 +199,6 @@ public class DBvalidation {
         }
         return 0;
     }
+    
+    
 }

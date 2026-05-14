@@ -14,16 +14,14 @@ import javax.swing.JOptionPane;
 public class BuyerForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BuyerForm.class.getName());
-    String username = "";
     /**
      * Creates new form buyerForm
      */
-    public BuyerForm(String username) {
-        this.username = username;
+    public BuyerForm() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        lblwelcm.setText("Welcome, "+username);
+        lblwelcm.setText("Welcome, "+UserDetails.getUsername());
     }
 
     /**
