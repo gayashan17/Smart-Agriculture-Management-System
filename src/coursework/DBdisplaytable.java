@@ -222,4 +222,61 @@ public class DBdisplaytable {
             }
         }
     }
+    
+    public static boolean updateStatusTable(int cropId,int farmerId,String newStatus)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            String query = "SELECT * FROM crops WHERE cropId= ? AND farmer_id=?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, cropId);
+            ps.setInt(2, farmerId);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next() == false)
+            {
+                JOptionPane.showMessageDialog(null,"You can only Update your crop status!");
+            }
+            else
+            {
+                try
+                {
+                    String query1 = "UPDATE crops set status=? WHERE cropId=?";
+                    PreparedStatement ps2 = conn.prepareStatement(query1);
+                    ps2.setString(1,newStatus);
+                    ps2.setInt(2,cropId);
+                    ps2.executeUpdate();
+                    return true;
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(null,"Failed to Update crop stauts"+e);
+                }
+            }
+            
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to Update Table"+e);
+            System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection");
+                }
+                
+            }
+        }
+        return false;
+    }
 }

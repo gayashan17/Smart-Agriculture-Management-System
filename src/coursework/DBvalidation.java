@@ -200,5 +200,50 @@ public class DBvalidation {
         return 0;
     }
     
+    public static String checkCropId(int cropId)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT crop_name FROM crops WHERE cropId=?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,cropId);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                String cname = rs.getString("crop_name");
+                return cname;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to check crop Name: "+e);
+            System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection: "+e);
+                }
+            }
+            
+        }
+        return null;
+    }
     
 }
