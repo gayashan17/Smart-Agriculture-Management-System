@@ -41,24 +41,6 @@ A desktop-based Smart Agriculture Management System developed using Java Swing, 
 - Access reporting and management insights
 - View agriculture-related reports for decision making
 
-### Reports & Decision Making
-- Total registered users by role
-- Total crops in the system
-- Crops by category
-- Harvested crops report
-- Growing and damaged crops report
-- Crop availability insights
-- Farmer productivity tracking
-- Seasonal crop activity reports
-
-### User Interface Features
-- Interactive Java Swing graphical user interface
-- JTable-based data management
-- Search and filtering functionality
-- Hover effects and navigation panels
-- Dynamic form navigation
-- Validation messages and confirmation dialogs
-
 ---
 
 ## Technologies Used
