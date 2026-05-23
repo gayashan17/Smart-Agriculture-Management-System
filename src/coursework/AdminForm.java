@@ -30,6 +30,7 @@ public class AdminForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         lblwelcm.setText("Welcome, "+UserDetails.getUsername());
+        lblFarmers.setText(AdminDashboard.loadFarmerCount());
     }
 
     /**
