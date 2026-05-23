@@ -35,7 +35,6 @@ public class FieldOfficerForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         lblwelcm = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         lblLogout = new javax.swing.JPanel();
@@ -56,17 +55,13 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("lets get farmin!");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 200, -1));
-
         lblwelcm.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblwelcm.setText("Welcome! (name)");
         jPanel2.add(lblwelcm, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, -1, -1));
 
         lblDate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblDate.setText("date");
-        jPanel2.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, -1));
+        jPanel2.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         lblLogout.setBackground(new java.awt.Color(0, 153, 255));
         lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -248,7 +243,6 @@ public class FieldOfficerForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

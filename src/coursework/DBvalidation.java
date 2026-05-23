@@ -62,6 +62,53 @@ public class DBvalidation {
         }
     }
     
+    public static String checkName(String username)
+    {
+        Connection conn = null; 
+        String name = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            String query = "SELECT name FROM users WHERE username =?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            
+            ps.setString(1,username);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                name = rs.getString("name");
+            }  
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to Check name of user: "+e);
+            System.out.println(e);
+        }
+        finally
+        {
+            try
+            {
+                if(conn != null)
+                {
+                    conn.close();
+                }                
+            }
+            catch(Exception e)
+            {
+                System.out.println("Error while trying to close conn: "+e);
+            }            
+        }       
+        if(name !=null)
+        {
+            return name;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
     public static boolean checkUserPassword(String username,String password)
     {
         Connection conn = null;

@@ -39,7 +39,6 @@ public class FarmerForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblwelcm = new javax.swing.JLabel();
-        lbldate = new javax.swing.JLabel();
         pnlAdd = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         pnlViewCr = new javax.swing.JPanel();
@@ -48,6 +47,12 @@ public class FarmerForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         pnlLogout = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        lbldate1 = new javax.swing.JLabel();
+        pnlLogout1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        pnlPfp = new javax.swing.JPanel();
+        pnlEdit = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,10 +66,6 @@ public class FarmerForm extends javax.swing.JFrame {
         lblwelcm.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblwelcm.setText("Welcome! (name)");
         jPanel2.add(lblwelcm, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, -1, -1));
-
-        lbldate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbldate.setText("date");
-        jPanel2.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         pnlAdd.setBackground(new java.awt.Color(0, 153, 255));
         pnlAdd.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -151,7 +152,57 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jPanel2.add(pnlLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 110, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 840, 500));
+        lbldate1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbldate1.setText("date");
+        jPanel2.add(lbldate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+
+        pnlLogout1.setBackground(new java.awt.Color(0, 153, 255));
+        pnlLogout1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlLogout1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlLogout1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlLogout1MouseExited(evt);
+            }
+        });
+        pnlLogout1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Log out");
+        pnlLogout1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
+
+        jPanel2.add(pnlLogout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 110, 40));
+
+        pnlPfp.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.add(pnlPfp, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 90, 80));
+
+        pnlEdit.setBackground(new java.awt.Color(0, 153, 255));
+        pnlEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlEditMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlEditMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlEditMouseExited(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Profile");
+        pnlEdit.add(jLabel9);
+
+        jPanel2.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, 90, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 850, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 500));
 
@@ -234,6 +285,35 @@ public class FarmerForm extends javax.swing.JFrame {
         pnlLogout.setBackground(new Color(0,153,255));
     }//GEN-LAST:event_pnlLogoutMouseExited
 
+    private void pnlLogout1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLogout1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlLogout1MouseClicked
+
+    private void pnlLogout1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLogout1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlLogout1MouseEntered
+
+    private void pnlLogout1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLogout1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlLogout1MouseExited
+
+    private void pnlEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEditMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        
+        Functions.mouseClick(pnlEdit, color1, color2);  
+        ProfileForm pf = new ProfileForm();
+        pf.setVisible(true);
+    }//GEN-LAST:event_pnlEditMouseClicked
+
+    private void pnlEditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEditMouseEntered
+        pnlEdit.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlEditMouseEntered
+
+    private void pnlEditMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEditMouseExited
+        pnlEdit.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlEditMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -264,12 +344,17 @@ public class FarmerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lbldate;
+    private javax.swing.JLabel lbldate1;
     private javax.swing.JLabel lblwelcm;
     private javax.swing.JPanel pnlAdd;
+    private javax.swing.JPanel pnlEdit;
     private javax.swing.JPanel pnlLogout;
+    private javax.swing.JPanel pnlLogout1;
+    private javax.swing.JPanel pnlPfp;
     private javax.swing.JPanel pnlViewCr;
     private javax.swing.JPanel pnlViewRec;
     // End of variables declaration//GEN-END:variables

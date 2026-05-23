@@ -1,0 +1,121 @@
+<!-- Created with Jaspersoft Studio version 7.0.6.final using JasperReports Library version 7.0.6-5d2a603fdc6b3db8f842a83383e594f41891534d  -->
+<jasperReport name="FarmerReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="69466f9f-6cad-4389-a74e-8e444f51e078">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="479"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="521"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="EADCWAdapter"/>
+	<query language="SQL"><![CDATA[SELECT 
+    u.name AS farmer_name,
+    u.role AS user_role,
+    c.crop_name,
+    c.category,
+    c.planting_date,
+    c.harvest_date,
+    c.land_size,
+    c.quantity,
+    c.status
+FROM crops c
+INNER JOIN users u ON c.farmer_Id = u.id
+ORDER BY c.category ASC, c.crop_name ASC;]]></query>
+	<field name="farmer_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="farmer_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
+	</field>
+	<field name="user_role" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="role"/>
+		<property name="com.jaspersoft.studio.field.label" value="user_role"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
+	</field>
+	<field name="crop_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="crop_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="crop_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="crops"/>
+	</field>
+	<field name="category" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="category"/>
+		<property name="com.jaspersoft.studio.field.label" value="category"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="crops"/>
+	</field>
+	<field name="planting_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="planting_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="planting_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="crops"/>
+	</field>
+	<field name="harvest_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="harvest_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="harvest_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="crops"/>
+	</field>
+	<field name="land_size" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="land_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="land_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="crops"/>
+	</field>
+	<field name="quantity" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="quantity"/>
+		<property name="com.jaspersoft.studio.field.label" value="quantity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="crops"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="crops"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="deee48b3-00cb-4ab3-a114-8558e5aab871" x="30" y="49" width="499" height="30" fontName="SansSerif" fontSize="20.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[FarmSphere DB - Crop Inventory Report]]></text>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="61" splitType="Stretch">
+		<element kind="staticText" uuid="54d2d673-2e0e-43f5-b40a-667f720129da" x="30" y="30" width="100" height="30">
+			<text><![CDATA[farmer_name]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4695eaca-11cb-4db3-b03c-a896b0992693"/>
+		</element>
+		<element kind="staticText" uuid="da5bc6ae-d263-41a8-9ead-6874c1294fe9" x="130" y="30" width="100" height="30">
+			<text><![CDATA[crop_name]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e61b0e9e-c452-4d88-87f5-e68d2f11f25e"/>
+		</element>
+		<element kind="staticText" uuid="d28ef66c-7661-495c-97ec-ecf253ba6f17" x="230" y="30" width="100" height="30">
+			<text><![CDATA[category]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="485f5328-108a-45a8-ba12-ee426235aba3"/>
+		</element>
+		<element kind="staticText" uuid="bf83ace2-572a-4282-9f71-d017cee5e57a" x="430" y="30" width="100" height="30">
+			<text><![CDATA[status]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d57b2b5a-3582-40cb-9d7c-0af2ea08aa12"/>
+		</element>
+		<element kind="staticText" uuid="5a5da318-95dc-4970-a330-8fadf9607e7a" x="330" y="30" width="100" height="30">
+			<text><![CDATA[quantity]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8091df6d-3cd1-4a0e-b872-fc35825db703"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<element kind="textField" uuid="110e855d-53e9-43e2-960c-de7f12574577" x="30" y="10" width="100" height="30">
+				<expression><![CDATA[$F{farmer_name}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4695eaca-11cb-4db3-b03c-a896b0992693"/>
+			</element>
+			<element kind="textField" uuid="bcae3d64-ec06-44af-9a49-00c4c4b27f12" x="130" y="10" width="100" height="30">
+				<expression><![CDATA[$F{crop_name}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e61b0e9e-c452-4d88-87f5-e68d2f11f25e"/>
+			</element>
+			<element kind="textField" uuid="0c9aa5c7-0a03-4971-89f0-5811d0a977eb" x="230" y="10" width="100" height="30">
+				<expression><![CDATA[$F{category}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="485f5328-108a-45a8-ba12-ee426235aba3"/>
+			</element>
+			<element kind="textField" uuid="89d5438d-b9fb-4ea4-a644-0f7be5c818d6" x="330" y="10" width="100" height="30">
+				<expression><![CDATA[$F{quantity}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8091df6d-3cd1-4a0e-b872-fc35825db703"/>
+			</element>
+			<element kind="textField" uuid="432867e2-d4a6-46a9-a585-8a126c4bf05e" x="430" y="10" width="100" height="30">
+				<expression><![CDATA[$F{status}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d57b2b5a-3582-40cb-9d7c-0af2ea08aa12"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

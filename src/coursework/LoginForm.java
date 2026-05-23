@@ -148,7 +148,7 @@ public class LoginForm extends javax.swing.JFrame {
         {
             String dbRole = DBvalidation.checkRole(txtuname.getText());
             String username = txtuname.getText();
-            UserDetails details = new UserDetails(username,dbRole);
+            UserDetails details = new UserDetails(username,dbRole,DBvalidation.checkName(username));
             if(dbRole.equals("Farmer"))
             {
                 this.dispose();
