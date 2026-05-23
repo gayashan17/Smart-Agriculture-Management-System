@@ -31,6 +31,12 @@ public class AdminForm extends javax.swing.JFrame {
         setResizable(false);
         lblwelcm.setText("Welcome, "+UserDetails.getUsername());
         lblFarmers.setText(AdminDashboard.loadFarmerCount());
+        lblFO.setText(AdminDashboard.loadOfficerCount());
+        lblBuyers.setText(AdminDashboard.loadBuyerCount());
+        lblTCrops.setText(AdminDashboard.loadCropCount());
+        lblDCrops.setText(AdminDashboard.loadDamgedCount());
+        lblHCrops.setText(AdminDashboard.loadHarvestedCount());
+        lblRTHCrops.setText(AdminDashboard.loadHarvestReadyCount());
     }
 
     /**
@@ -295,11 +301,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void loadDashboard()
-    {
-        
-    }
-    
+
     
     private void pnlViewCropReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCropReportMouseClicked
         Color color1 = new Color(0,153,255);
