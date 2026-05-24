@@ -30,13 +30,13 @@ public class AdminForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         lblwelcm.setText("Welcome, "+UserDetails.getUsername());
-        lblFarmers.setText(AdminDashboard.loadFarmerCount());
-        lblFO.setText(AdminDashboard.loadOfficerCount());
-        lblBuyers.setText(AdminDashboard.loadBuyerCount());
-        lblTCrops.setText(AdminDashboard.loadCropCount());
-        lblDCrops.setText(AdminDashboard.loadDamgedCount());
-        lblHCrops.setText(AdminDashboard.loadHarvestedCount());
-        lblRTHCrops.setText(AdminDashboard.loadHarvestReadyCount());
+        lblFarmers.setText(DBCrops.loadFarmerCount());
+        lblFO.setText(DBCrops.loadOfficerCount());
+        lblBuyers.setText(DBCrops.loadBuyerCount());
+        lblTCrops.setText(DBCrops.loadCropCount());
+        lblDCrops.setText(DBCrops.loadDamgedCount());
+        lblHCrops.setText(DBCrops.loadHarvestedCount());
+        lblRTHCrops.setText(DBCrops.loadHarvestReadyCount());
     }
 
     /**

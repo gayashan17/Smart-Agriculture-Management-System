@@ -10,36 +10,10 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class AdminDashboard {
+public class DBCrops {
     
     
-    public static void loadDashboard()
-    {
-        Connection conn = null;
-        try
-        {
-            
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null,"Error while trying to load Dashboard Details: "+ e);
-        }
-        finally
-        {
-            if(conn!= null)
-            {
-                try
-                {
-                    conn.close();
-                }
-                catch(Exception e)
-                {
-                    System.out.println("Error trying to close connection: "+e);
-                }
-            }
-        }
-    }
-    
+   
     public static String loadFarmerCount()
     {
         Connection conn = null;
@@ -80,6 +54,8 @@ public class AdminDashboard {
         return count;
     }
     
+    
+    
     public static String loadOfficerCount()
     {
         Connection conn = null;
@@ -119,6 +95,8 @@ public class AdminDashboard {
         }
         return count;
     }
+    
+    
     
     public static String loadBuyerCount()
     {
@@ -204,6 +182,48 @@ public class AdminDashboard {
         return count;
     }
     
+    public static String loadCropCount(int id)
+    {
+        Connection conn = null;
+        String count = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT COUNT(*) AS total_crops FROM crops WHERE farmer_id=?";
+            
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) 
+            {
+                count = rs.getString("total_crops");
+            }
+           
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to load Dashboard Details: "+ e);
+        }
+        finally
+        {
+            if(conn!= null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error trying to close connection: "+e);
+                }
+            }
+        }
+        return count;
+        
+    }
+    
     public static String loadHarvestReadyCount()
     {
         Connection conn = null;
@@ -243,6 +263,49 @@ public class AdminDashboard {
         }
         return count;
     }
+    
+    public static String loadHarvestReadyCount(int id)
+    {
+        Connection conn = null;
+        String count = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT COUNT(*) AS total_crops FROM crops WHERE status = 'Ready to Harvest' AND farmer_id=?";
+            
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) 
+            {
+                count = rs.getString("total_crops");
+            }
+           
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to load Dashboard Details: "+ e);
+        }
+        finally
+        {
+            if(conn!= null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error trying to close connection: "+e);
+                }
+            }
+        }
+        return count;
+    }
+    
+    
     
     public static String loadHarvestedCount()
     {
@@ -322,5 +385,53 @@ public class AdminDashboard {
             }
         }
         return count;
+    }
+    
+    public static String loadNextHarvest(int id)
+    {
+        Connection conn = null;
+        Date date = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT harvest_date FROM crops WHERE farmer_Id=? and status='Growing'";
+            
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) 
+            {
+                date = rs.getDate("harvest_date");
+            }
+           
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to load Dashboard Details: "+ e);
+        }
+        finally
+        {
+            if(conn!= null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error trying to close connection: "+e);
+                }
+            }
+        }
+        if(date != null)
+        {
+            return date.toString();
+        }
+        else
+        {
+            return "No Upcoming Harvest";
+        }
     }
 }

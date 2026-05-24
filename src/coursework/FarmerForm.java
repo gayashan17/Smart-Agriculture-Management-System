@@ -22,7 +22,11 @@ public class FarmerForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        
         lblwelcm.setText("Welcome, "+UserDetails.getUsername());
+        lblCropCount.setText(DBCrops.loadCropCount(UserDetails.getId()));
+        lblRTHCrops.setText(DBCrops.loadHarvestReadyCount(UserDetails.getId()));
+        lblNextHarvestDate.setText(DBCrops.loadNextHarvest(UserDetails.getId()));
     }
     
    
@@ -53,6 +57,17 @@ public class FarmerForm extends javax.swing.JFrame {
         pnlPfp = new javax.swing.JPanel();
         pnlEdit = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        lblRTHCrops = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        lblNextHarvestDate = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        lblCropCount = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,7 +101,7 @@ public class FarmerForm extends javax.swing.JFrame {
         jLabel5.setText("Add Crops");
         pnlAdd.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
-        jPanel2.add(pnlAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 360, 50));
+        jPanel2.add(pnlAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 360, 50));
 
         pnlViewCr.setBackground(new java.awt.Color(0, 153, 255));
         pnlViewCr.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -107,7 +122,7 @@ public class FarmerForm extends javax.swing.JFrame {
         jLabel6.setText("View Crops");
         pnlViewCr.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
-        jPanel2.add(pnlViewCr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 360, 50));
+        jPanel2.add(pnlViewCr, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 360, 50));
 
         pnlViewRec.setBackground(new java.awt.Color(0, 153, 255));
         pnlViewRec.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,7 +143,7 @@ public class FarmerForm extends javax.swing.JFrame {
         jLabel7.setText("View Recommendations");
         pnlViewRec.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
-        jPanel2.add(pnlViewRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 360, 50));
+        jPanel2.add(pnlViewRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 360, 50));
 
         pnlLogout.setBackground(new java.awt.Color(0, 153, 255));
         pnlLogout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,6 +217,67 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jPanel2.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, 90, -1));
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblRTHCrops.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblRTHCrops.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRTHCrops.setText("crops");
+        jPanel4.add(lblRTHCrops, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 40, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Ready To Harvest");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 160, -1));
+
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 160, 90));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel2.setText("Overview");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, -1));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNextHarvestDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblNextHarvestDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNextHarvestDate.setText("crops");
+        jPanel5.add(lblNextHarvestDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 140, -1));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Next Harvest");
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 160, -1));
+
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 160, 90));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblCropCount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblCropCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCropCount.setText("crops");
+        jPanel6.add(lblCropCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 40, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Your Crop Count");
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 160, -1));
+
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 160, 90));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 580, 180));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 850, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 500));
@@ -242,7 +318,7 @@ public class FarmerForm extends javax.swing.JFrame {
         
         Functions.mouseClick(pnlViewCr, color1, color2);
         
-        ViewCropsFarmerForm f = new ViewCropsFarmerForm();
+        FarmerViewCropsForm f = new FarmerViewCropsForm();
         f.setVisible(true);
     }//GEN-LAST:event_pnlViewCrMouseClicked
 
@@ -340,6 +416,10 @@ public class FarmerForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -348,6 +428,13 @@ public class FarmerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lblCropCount;
+    private javax.swing.JLabel lblNextHarvestDate;
+    private javax.swing.JLabel lblRTHCrops;
     private javax.swing.JLabel lbldate1;
     private javax.swing.JLabel lblwelcm;
     private javax.swing.JPanel pnlAdd;

@@ -12,15 +12,19 @@ public class UserDetails {
     private static String username;
     private static String role;
     private static String name;
+    private static int id;
     public UserDetails(String username,String role,String name)
     {
         this.username = username;
         this.role = role;
         this.name = name;
+        this.id = DBvalidation.checkId(username);
     }
     
     public static String getUsername(){return username;}
     public static String getRole(){return role;}
     public static String getName(){return name;}
+    public static int getId(){return id;}
+
           
 }

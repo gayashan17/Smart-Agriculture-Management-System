@@ -11,14 +11,14 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class ViewCropsFarmerForm extends javax.swing.JFrame {
+public class FarmerViewCropsForm extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ViewCropsFarmerForm.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FarmerViewCropsForm.class.getName());
     public boolean Warningtxt = false;
     /**
      * Creates new form ViewCropsFarmerForm
      */
-    public ViewCropsFarmerForm() {
+    public FarmerViewCropsForm() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -213,15 +213,16 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
 
         lblFilters1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblFilters1.setText("Filters");
-        jPanel3.add(lblFilters1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 180, -1));
+        jPanel3.add(lblFilters1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 60, -1));
 
         comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select--", "Growing", "Ready to harvest", "Damaged", "Harvested" }));
         jPanel3.add(comboStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 110, -1));
 
         lblWarning.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblWarning.setForeground(new java.awt.Color(255, 0, 51));
+        lblWarning.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarning.setText("Warning");
-        jPanel3.add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 330, -1));
+        jPanel3.add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 530, -1));
 
         pnlFilterReset.setBackground(new java.awt.Color(0, 153, 255));
         pnlFilterReset.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -287,6 +288,10 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
         Color color2 = new Color(153,255,255);
 
         Functions.mouseClick(pnlFilterName, color1, color2);
+        if(txtSearch.getText().isEmpty())
+        {
+            lblWarning.setText("Please enter a crop to search");
+        }
         DBdisplaytable.loadIntoTableUID(tblCrops);
         if(Warningtxt == true)
             {
@@ -400,6 +405,7 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
         {
             lblWarning.setVisible(false);
         }
+        DBdisplaytable.loadIntoTable(tblCrops);
         
     }//GEN-LAST:event_pnlFilterResetMouseClicked
 
@@ -479,7 +485,7 @@ public class ViewCropsFarmerForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ViewCropsFarmerForm().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FarmerViewCropsForm().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -163,7 +163,7 @@ public class FarmerUpdateStatusForm extends javax.swing.JFrame {
             {
                 this.dispose();
                 form.dispose();
-                ViewCropsFarmerForm f = new ViewCropsFarmerForm();
+                FarmerViewCropsForm f = new FarmerViewCropsForm();
                 f.setVisible(true);
                 JOptionPane.showMessageDialog(null,"Crop status updated successfully");
             }
