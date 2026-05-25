@@ -131,12 +131,30 @@ public class FarmerViewCropsForm extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane1.setViewportView(tblCrops);
+        if (tblCrops.getColumnModel().getColumnCount() > 0) {
+            tblCrops.getColumnModel().getColumn(0).setResizable(false);
+            tblCrops.getColumnModel().getColumn(1).setResizable(false);
+            tblCrops.getColumnModel().getColumn(2).setResizable(false);
+            tblCrops.getColumnModel().getColumn(3).setResizable(false);
+            tblCrops.getColumnModel().getColumn(4).setResizable(false);
+            tblCrops.getColumnModel().getColumn(5).setResizable(false);
+            tblCrops.getColumnModel().getColumn(6).setResizable(false);
+            tblCrops.getColumnModel().getColumn(7).setResizable(false);
+            tblCrops.getColumnModel().getColumn(8).setResizable(false);
+        }
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 770, 210));
 
@@ -427,20 +445,13 @@ public class FarmerViewCropsForm extends javax.swing.JFrame {
         }
         else
         {
-            Object cellValueCID = tblCrops.getValueAt(selectedIndex,0);
-            Object cellValueUID=tblCrops.getValueAt(selectedIndex,1);
+            Object cellValueCropId = tblCrops.getValueAt(selectedIndex,0);
+            Object cellValueFarmerId=tblCrops.getValueAt(selectedIndex,1);
             int cropId = -1;
             int farmerId = -1;
-            if(cellValueCID != null)
-            {
-                cropId = Integer.parseInt(cellValueCID.toString());
-            }
-            if(cellValueUID != null)
-            {
-                farmerId = Integer.parseInt(cellValueUID.toString())  ;
-            }
             
-            
+            cropId = Integer.parseInt(cellValueCropId.toString());
+            farmerId = Integer.parseInt(cellValueFarmerId.toString())  ;
             
             if(cropId != -1 && farmerId != -1)
             {

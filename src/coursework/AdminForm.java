@@ -11,8 +11,9 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.HashMap;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -29,7 +30,9 @@ public class AdminForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        lblwelcm.setText("Welcome, "+UserDetails.getUsername());
+        
+        
+        lblwelcm.setText("Welcome Admin, "+UserDetails.getUsername());
         lblFarmers.setText(DBCrops.loadFarmerCount());
         lblFO.setText(DBCrops.loadOfficerCount());
         lblBuyers.setText(DBCrops.loadBuyerCount());
@@ -37,6 +40,7 @@ public class AdminForm extends javax.swing.JFrame {
         lblDCrops.setText(DBCrops.loadDamgedCount());
         lblHCrops.setText(DBCrops.loadHarvestedCount());
         lblRTHCrops.setText(DBCrops.loadHarvestReadyCount());
+        DBdisplaytable.loadIntoAdminTable(tableUsers);
     }
 
     /**
@@ -80,6 +84,11 @@ public class AdminForm extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         pnlLogout = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableUsers = new javax.swing.JTable();
+        pnlRemoveUser = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -113,7 +122,7 @@ public class AdminForm extends javax.swing.JFrame {
         jLabel5.setText("View Crop Inventory Report");
         pnlViewCropReport.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel3.add(pnlViewCropReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 220, 40));
+        jPanel3.add(pnlViewCropReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 220, 40));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -131,7 +140,7 @@ public class AdminForm extends javax.swing.JFrame {
         lblBuyers.setText("buyers");
         jPanel2.add(lblBuyers, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 210, -1));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 210, 70));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 210, 70));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -149,7 +158,7 @@ public class AdminForm extends javax.swing.JFrame {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 210, -1));
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 210, 70));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 210, 70));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -167,7 +176,7 @@ public class AdminForm extends javax.swing.JFrame {
         lblFO.setText("field officers");
         jPanel5.add(lblFO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 210, -1));
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 210, 70));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 210, 70));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -250,7 +259,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         jPanel6.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 150, 60));
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 730, 130));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 730, 130));
 
         pnlAddAdmin.setBackground(new java.awt.Color(0, 153, 255));
         pnlAddAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -271,7 +280,7 @@ public class AdminForm extends javax.swing.JFrame {
         jLabel8.setText("Add Admin");
         pnlAddAdmin.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
-        jPanel3.add(pnlAddAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 220, 40));
+        jPanel3.add(pnlAddAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, 220, 40));
 
         pnlLogout.setBackground(new java.awt.Color(0, 153, 255));
         pnlLogout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -293,11 +302,67 @@ public class AdminForm extends javax.swing.JFrame {
         jLabel9.setText("Log out");
         pnlLogout.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        jPanel3.add(pnlLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, 110, 40));
+        jPanel3.add(pnlLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, 110, 40));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 770, 520));
+        tableUsers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Username", "Role"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableUsers);
+        if (tableUsers.getColumnModel().getColumnCount() > 0) {
+            tableUsers.getColumnModel().getColumn(0).setResizable(false);
+            tableUsers.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 730, 160));
+
+        pnlRemoveUser.setBackground(new java.awt.Color(0, 153, 255));
+        pnlRemoveUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlRemoveUserMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlRemoveUserMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlRemoveUserMouseExited(evt);
+            }
+        });
+        pnlRemoveUser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Remove User");
+        pnlRemoveUser.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
+
+        jPanel3.add(pnlRemoveUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 500, 140, 40));
+
+        lblWarning.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblWarning.setForeground(new java.awt.Color(204, 0, 0));
+        lblWarning.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarning.setText("Warning");
+        lblWarning.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 730, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 910, 610));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -312,7 +377,17 @@ public class AdminForm extends javax.swing.JFrame {
         try
         {
             conn = DBconnection.getConnection();
-            String reportPath = "src/FarmerReport.jrxml";
+                    
+            String reportPath = "C:\\NIBM\\EAD\\CourseWork\\Smart-Agriculture-Management-System\\src\\coursework\\Reports\\FarmerReport.jrxml";
+                    
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportPath);
+                    
+            HashMap<String, Object> parameters = new HashMap<>();
+                    
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);
+                    
+            JasperViewer.viewReport(jasperPrint, false);
+                    
         }
         catch(Exception e)
         {
@@ -324,18 +399,7 @@ public class AdminForm extends javax.swing.JFrame {
             {
                 try
                 {
-                    conn = DBconnection.getConnection();
-                    
-                    String reportPath = "C:\\NIBM\\EAD\\CourseWork\\Smart-Agriculture-Management-System\\src\\coursework\\Reports\\FarmerReport.jrxml";
-                    
-                    JasperReport jasperReport = JasperCompileManager.compileReport(reportPath);
-                    
-                    HashMap<String, Object> parameters = new HashMap<>();
-                    
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);
-                    
-                    JasperViewer.viewReport(jasperPrint, false);
-                    
+                    conn.close();
                 }
                 catch(Exception e)
                 {
@@ -358,6 +422,8 @@ public class AdminForm extends javax.swing.JFrame {
         Color color2 = new Color(153,255,255);
 
         Functions.mouseClick(pnlAddAdmin, color1, color2);
+        AdminAddForm form = new AdminAddForm();
+        form.setVisible(true);
     }//GEN-LAST:event_pnlAddAdminMouseClicked
 
     private void pnlAddAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddAdminMouseEntered
@@ -391,6 +457,82 @@ public class AdminForm extends javax.swing.JFrame {
         pnlLogout.setBackground(new Color(0,153,255));
     }//GEN-LAST:event_pnlLogoutMouseExited
 
+    private void pnlRemoveUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRemoveUserMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+        Functions.mouseClick(pnlRemoveUser, color1, color2);
+        
+        int selectedIndex = tableUsers.getSelectedRow();
+        if(selectedIndex == -1)
+        {
+            lblWarning.setText("Please select a row first");
+        }
+        else
+        {
+            Object cellValueUsername = tableUsers.getValueAt(selectedIndex,0);
+            Object cellValueRole=tableUsers.getValueAt(selectedIndex,1);
+            String role = null;
+            String username = null;
+            
+            username = cellValueUsername.toString();
+            role = cellValueRole.toString();
+            
+            if(role != null && username != null)
+            {
+                int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this user ? \nUsername: "+username+"\nRole: "+role+"\nThey will be deleted from the System Permenetly","Confirm user deletion",JOptionPane.YES_NO_OPTION);
+                
+                if(option == JOptionPane.YES_OPTION)
+                {
+                    Connection conn = null;
+                    try
+                    {
+                        conn = DBconnection.getConnection();
+                        String query = "DELETE FROM users WHERE id=?";
+                        
+                        PreparedStatement ps = conn.prepareStatement(query);
+                        ps.setInt(1,DBvalidation.checkId(username));
+                        ps.executeUpdate();
+                        
+                        DBdisplaytable.loadIntoAdminTable(tableUsers);
+                        
+                        
+                    }
+                    catch(Exception e)
+                    {
+                        JOptionPane.showMessageDialog(null,"Error while trying to delete User: "+e);
+                    }
+                    finally
+                    {
+                        if(conn != null)
+                        {
+                            try
+                            {
+                                conn.close();
+                            }
+                            catch(Exception e)
+                            {
+                                System.out.println(e);
+                            }
+                        }
+  
+                    }
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null,"Could not retrieve valid Crop or Farmer IDs");
+            }
+        }
+    }//GEN-LAST:event_pnlRemoveUserMouseClicked
+
+    private void pnlRemoveUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRemoveUserMouseEntered
+        pnlRemoveUser.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlRemoveUserMouseEntered
+
+    private void pnlRemoveUserMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRemoveUserMouseExited
+        pnlRemoveUser.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlRemoveUserMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -420,6 +562,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -438,6 +581,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuyers;
     private javax.swing.JLabel lblDCrops;
     private javax.swing.JLabel lblFO;
@@ -445,9 +589,12 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblHCrops;
     private javax.swing.JLabel lblRTHCrops;
     private javax.swing.JLabel lblTCrops;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JLabel lblwelcm;
     private javax.swing.JPanel pnlAddAdmin;
     private javax.swing.JPanel pnlLogout;
+    private javax.swing.JPanel pnlRemoveUser;
     private javax.swing.JPanel pnlViewCropReport;
+    private javax.swing.JTable tableUsers;
     // End of variables declaration//GEN-END:variables
 }

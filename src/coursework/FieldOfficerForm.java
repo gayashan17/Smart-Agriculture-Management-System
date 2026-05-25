@@ -5,6 +5,7 @@
 package coursework;
 
 import java.awt.Color;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +22,11 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        
+        LocalDate today = LocalDate.now();
+        lbldate.setText("Today is: "+today.toString());
         lblwelcm.setText("Welcome, "+UserDetails.getUsername());
+        
     }
 
     /**
@@ -36,7 +41,7 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lblwelcm = new javax.swing.JLabel();
-        lblDate = new javax.swing.JLabel();
+        lbldate = new javax.swing.JLabel();
         lblLogout = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         pnlView = new javax.swing.JPanel();
@@ -59,9 +64,9 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         lblwelcm.setText("Welcome! (name)");
         jPanel2.add(lblwelcm, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, -1, -1));
 
-        lblDate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblDate.setText("date");
-        jPanel2.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        lbldate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbldate.setText("date");
+        jPanel2.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         lblLogout.setBackground(new java.awt.Color(0, 153, 255));
         lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -249,8 +254,8 @@ public class FieldOfficerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblDate;
     private javax.swing.JPanel lblLogout;
+    private javax.swing.JLabel lbldate;
     private javax.swing.JLabel lblwelcm;
     private javax.swing.JPanel pnlAdd;
     private javax.swing.JPanel pnlUpdate;

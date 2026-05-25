@@ -6,6 +6,7 @@ package coursework;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import java.time.LocalDate;
 
 /**
  *
@@ -23,10 +24,14 @@ public class FarmerForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         
+        LocalDate today = LocalDate.now();
+        
+        
         lblwelcm.setText("Welcome, "+UserDetails.getUsername());
         lblCropCount.setText(DBCrops.loadCropCount(UserDetails.getId()));
         lblRTHCrops.setText(DBCrops.loadHarvestReadyCount(UserDetails.getId()));
         lblNextHarvestDate.setText(DBCrops.loadNextHarvest(UserDetails.getId()));
+        lbldate.setText("Today is: "+today.toString());
     }
     
    
@@ -51,7 +56,7 @@ public class FarmerForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         pnlLogout = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        lbldate1 = new javax.swing.JLabel();
+        lbldate = new javax.swing.JLabel();
         pnlLogout1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         pnlPfp = new javax.swing.JPanel();
@@ -80,7 +85,7 @@ public class FarmerForm extends javax.swing.JFrame {
 
         lblwelcm.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblwelcm.setText("Welcome! (name)");
-        jPanel2.add(lblwelcm, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, -1, -1));
+        jPanel2.add(lblwelcm, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         pnlAdd.setBackground(new java.awt.Color(0, 153, 255));
         pnlAdd.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,9 +172,9 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jPanel2.add(pnlLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 110, 40));
 
-        lbldate1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbldate1.setText("date");
-        jPanel2.add(lbldate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        lbldate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbldate.setText("Today Is, (date)");
+        jPanel2.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         pnlLogout1.setBackground(new java.awt.Color(0, 153, 255));
         pnlLogout1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,7 +281,7 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 160, 90));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 580, 180));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 580, 170));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 850, 500));
 
@@ -435,7 +440,7 @@ public class FarmerForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblCropCount;
     private javax.swing.JLabel lblNextHarvestDate;
     private javax.swing.JLabel lblRTHCrops;
-    private javax.swing.JLabel lbldate1;
+    private javax.swing.JLabel lbldate;
     private javax.swing.JLabel lblwelcm;
     private javax.swing.JPanel pnlAdd;
     private javax.swing.JPanel pnlEdit;

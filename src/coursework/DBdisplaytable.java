@@ -223,6 +223,50 @@ public class DBdisplaytable {
         }
     }
     
+    public static void loadIntoAdminTable(JTable table)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            String query = "SELECT username, role FROM users";
+            
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
+            model.setRowCount(0);
+            while(rs.next())
+            {
+                String username = rs.getString("username");
+                String role = rs.getString("role");
+                
+                Object[] rowData = {username,role};
+                model.addRow(rowData);
+            }
+            
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to load into Table"+e);
+             System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection");
+                }
+                
+            }
+        }
+    }
+    
     public static boolean updateStatusTable(int cropId,int farmerId,String newStatus)
     {
         Connection conn = null;

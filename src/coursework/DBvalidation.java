@@ -62,6 +62,7 @@ public class DBvalidation {
         }
     }
     
+    
     public static String checkName(String username)
     {
         Connection conn = null; 

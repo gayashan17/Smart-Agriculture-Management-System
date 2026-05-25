@@ -5,6 +5,7 @@
 package coursework;
 
 import java.awt.Color;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,9 @@ public class BuyerForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         lblwelcm.setText("Welcome, "+UserDetails.getUsername());
+        
+        LocalDate today = LocalDate.now();
+        lbldate.setText("Today is: "+today.toString());
     }
 
     /**
@@ -35,9 +39,7 @@ public class BuyerForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         lblwelcm = new javax.swing.JLabel();
-        lblDate = new javax.swing.JLabel();
         pnlLogout = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         pnlViewCr = new javax.swing.JPanel();
@@ -46,6 +48,7 @@ public class BuyerForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         pnlViewRq = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        lbldate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -56,17 +59,9 @@ public class BuyerForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("lets get farmin!");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 61, 200, -1));
-
         lblwelcm.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblwelcm.setText("Welcome! (name)");
         jPanel2.add(lblwelcm, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, -1, -1));
-
-        lblDate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblDate.setText("date");
-        jPanel2.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, -1));
 
         pnlLogout.setBackground(new java.awt.Color(0, 153, 255));
         pnlLogout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,6 +141,10 @@ public class BuyerForm extends javax.swing.JFrame {
         pnlViewRq.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         jPanel2.add(pnlViewRq, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 360, 50));
+
+        lbldate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbldate.setText("date");
+        jPanel2.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 0, 830, 520));
 
@@ -240,14 +239,13 @@ public class BuyerForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lbldate;
     private javax.swing.JLabel lblwelcm;
     private javax.swing.JPanel pnlLogout;
     private javax.swing.JPanel pnlSend;
