@@ -72,6 +72,8 @@ public class FarmerForm extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         lblCropCount = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        pnlViewReqs = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -105,7 +107,7 @@ public class FarmerForm extends javax.swing.JFrame {
         jLabel5.setText("Add Crops");
         pnlAdd.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
-        jPanel2.add(pnlAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 360, 50));
+        jPanel2.add(pnlAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 360, 40));
 
         pnlViewCr.setBackground(new java.awt.Color(0, 153, 255));
         pnlViewCr.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,7 +128,7 @@ public class FarmerForm extends javax.swing.JFrame {
         jLabel6.setText("View Crops");
         pnlViewCr.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
-        jPanel2.add(pnlViewCr, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 360, 50));
+        jPanel2.add(pnlViewCr, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 360, 40));
 
         pnlViewRec.setBackground(new java.awt.Color(0, 153, 255));
         pnlViewRec.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -144,10 +146,11 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("View Recommendations");
-        pnlViewRec.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+        pnlViewRec.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, -1));
 
-        jPanel2.add(pnlViewRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 360, 50));
+        jPanel2.add(pnlViewRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 360, 40));
 
         pnlLogout.setBackground(new java.awt.Color(0, 153, 255));
         pnlLogout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -279,6 +282,33 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 580, 170));
 
+        pnlViewReqs.setBackground(new java.awt.Color(0, 153, 255));
+        pnlViewReqs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlViewReqsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlViewReqsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlViewReqsMouseExited(evt);
+            }
+        });
+        pnlViewReqs.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("View Purchase requests");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        pnlViewReqs.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, -1));
+
+        jPanel2.add(pnlViewReqs, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 360, 40));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 850, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 500));
@@ -394,6 +424,27 @@ public class FarmerForm extends javax.swing.JFrame {
         pnlEdit.setBackground(new Color(0,153,255));
     }//GEN-LAST:event_pnlEditMouseExited
 
+    private void pnlViewReqsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewReqsMouseClicked
+            // TODO add your handling code here:
+    }//GEN-LAST:event_pnlViewReqsMouseClicked
+
+    private void pnlViewReqsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewReqsMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlViewReqsMouseEntered
+
+    private void pnlViewReqsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewReqsMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlViewReqsMouseExited
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    
+        this.dispose();
+        FarmerPReqsForm form = new FarmerPReqsForm();
+        form.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jLabel12MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -422,6 +473,7 @@ public class FarmerForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -447,5 +499,6 @@ public class FarmerForm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlLogout1;
     private javax.swing.JPanel pnlViewCr;
     private javax.swing.JPanel pnlViewRec;
+    private javax.swing.JPanel pnlViewReqs;
     // End of variables declaration//GEN-END:variables
 }

@@ -31,7 +31,7 @@ public class AdminForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         
-        
+        lblWarning.setVisible(false);
         lblwelcm.setText("Welcome Admin, "+UserDetails.getUsername());
         lblFarmers.setText(DBCrops.loadFarmerCount());
         lblFO.setText(DBCrops.loadOfficerCount());

@@ -24,6 +24,7 @@ public class AdminAddForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        lblWarning.setVisible(false);
     }
 
     /**

@@ -10,15 +10,20 @@ import java.awt.Color;
  *
  * @author User
  */
-public class FarmerReccForm extends javax.swing.JFrame {
+public class FarmerPReqsForm extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FarmerReccForm.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FarmerPReqsForm.class.getName());
 
-    public FarmerReccForm() {
+    /**
+     * Creates new form FarmerPReqsForm
+     */
+    public FarmerPReqsForm() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        DBdisplaytable.loadIntoFarmerRecc(tblRecc);
+        DBdisplaytable.loadIntoFarmerPReqs(tblReqs);
+        
+        
     }
 
     /**
@@ -32,11 +37,11 @@ public class FarmerReccForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblRecc = new javax.swing.JTable();
         pnlReturn2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblReqs = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,38 +51,6 @@ public class FarmerReccForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Reccomendations");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 210, -1));
-
-        tblRecc.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Field officer", "Created Date", "Reccomendation"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblRecc);
-        if (tblRecc.getColumnModel().getColumnCount() > 0) {
-            tblRecc.getColumnModel().getColumn(0).setResizable(false);
-            tblRecc.getColumnModel().getColumn(1).setResizable(false);
-            tblRecc.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 700, 200));
 
         pnlReturn2.setBackground(new java.awt.Color(0, 153, 255));
         pnlReturn2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,11 +72,45 @@ public class FarmerReccForm extends javax.swing.JFrame {
         jLabel8.setText("Return");
         pnlReturn2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        jPanel2.add(pnlReturn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 110, 40));
+        jPanel2.add(pnlReturn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 110, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 0, 780, 430));
+        tblReqs.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Buyer Name", "Crop Name", "Quantity", "Request Date", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblReqs);
+        if (tblReqs.getColumnModel().getColumnCount() > 0) {
+            tblReqs.getColumnModel().getColumn(0).setResizable(false);
+            tblReqs.getColumnModel().getColumn(1).setResizable(false);
+            tblReqs.getColumnModel().getColumn(2).setResizable(false);
+            tblReqs.getColumnModel().getColumn(3).setResizable(false);
+            tblReqs.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 740, 310));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel1.setText("Purchase Requests");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 180, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 800, 480));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -116,7 +123,7 @@ public class FarmerReccForm extends javax.swing.JFrame {
         FarmerForm form = new FarmerForm();
         form.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_pnlReturn2MouseClicked
 
     private void pnlReturn2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturn2MouseEntered
@@ -149,7 +156,7 @@ public class FarmerReccForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FarmerReccForm().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FarmerPReqsForm().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -159,6 +166,6 @@ public class FarmerReccForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlReturn2;
-    private javax.swing.JTable tblRecc;
+    private javax.swing.JTable tblReqs;
     // End of variables declaration//GEN-END:variables
 }

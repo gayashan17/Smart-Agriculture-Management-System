@@ -512,4 +512,52 @@ public class DBdisplaytable {
             }
         }
     }
+    
+    
+    public static void loadIntoFarmerPReqs(JTable table)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT buyer_username , crop_name,quantity_requested,request_date,status FROM purchase_requests";
+            
+            PreparedStatement st = conn.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
+            model.setRowCount(0);
+            while(rs.next())
+            {
+                String bName = rs.getString("buyer_username");
+                String cName = rs.getString("crop_name");
+                String quan = rs.getString("quantity_requested");
+                String date = rs.getString("request_date");
+                String status = rs.getString("status");
+
+                model.addRow(new Object[]{bName,cName,quan,date,status});
+            }
+            
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to load into Table"+e);
+             System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection");
+                }
+                
+            }
+        }
+    }
 }
