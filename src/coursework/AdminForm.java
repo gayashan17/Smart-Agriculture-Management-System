@@ -38,7 +38,6 @@ public class AdminForm extends javax.swing.JFrame {
         lblBuyers.setText(DBCrops.loadBuyerCount());
         lblTCrops.setText(DBCrops.loadCropCount());
         lblDCrops.setText(DBCrops.loadDamgedCount());
-        lblHCrops.setText(DBCrops.loadHarvestedCount());
         lblRTHCrops.setText(DBCrops.loadHarvestReadyCount());
         DBdisplaytable.loadIntoAdminTable(tableUsers);
     }
@@ -68,9 +67,6 @@ public class AdminForm extends javax.swing.JFrame {
         lblFO = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        lblHCrops = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         lblRTHCrops = new javax.swing.JLabel();
@@ -187,24 +183,6 @@ public class AdminForm extends javax.swing.JFrame {
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 710, -1));
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 153, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Harvested");
-        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 150, -1));
-
-        lblHCrops.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblHCrops.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHCrops.setText("hCrops");
-        jPanel8.add(lblHCrops, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 150, -1));
-
-        jPanel6.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, 150, 60));
-
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -221,7 +199,7 @@ public class AdminForm extends javax.swing.JFrame {
         lblRTHCrops.setText("rthCrops");
         jPanel10.add(lblRTHCrops, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 150, -1));
 
-        jPanel6.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, 60));
+        jPanel6.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, 60));
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -257,7 +235,7 @@ public class AdminForm extends javax.swing.JFrame {
         lblDCrops.setText("dCrops");
         jPanel12.add(lblDCrops, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 150, -1));
 
-        jPanel6.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 150, 60));
+        jPanel6.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 150, 60));
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 730, 130));
 
@@ -568,7 +546,6 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -580,13 +557,11 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuyers;
     private javax.swing.JLabel lblDCrops;
     private javax.swing.JLabel lblFO;
     private javax.swing.JLabel lblFarmers;
-    private javax.swing.JLabel lblHCrops;
     private javax.swing.JLabel lblRTHCrops;
     private javax.swing.JLabel lblTCrops;
     private javax.swing.JLabel lblWarning;

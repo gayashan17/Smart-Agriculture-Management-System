@@ -233,7 +233,7 @@ public class FarmerViewCropsForm extends javax.swing.JFrame {
         lblFilters1.setText("Filters");
         jPanel3.add(lblFilters1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 60, -1));
 
-        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select--", "Growing", "Ready to harvest", "Damaged", "Harvested" }));
+        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select--", "Growing", "Ready to harvest", "Damaged" }));
         jPanel3.add(comboStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 110, -1));
 
         lblWarning.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

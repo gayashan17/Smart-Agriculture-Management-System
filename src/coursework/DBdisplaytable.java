@@ -325,6 +325,42 @@ public class DBdisplaytable {
         return false;
     }
     
+    public static boolean updateReqStatus(int reqId,String newStatus)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            String query1 = "UPDATE purchase_requests set status=? WHERE id=?";
+            PreparedStatement ps2 = conn.prepareStatement(query1);
+            ps2.setString(1,newStatus);
+            ps2.setInt(2,reqId);
+            ps2.executeUpdate();
+            return true;
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to Update Request Status"+e);
+            System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection");
+                }
+                
+            }
+        }
+        return false;
+    }
+    
     public static void loadIntoBuyerTable(JTable table)
     {
         Connection conn = null;
@@ -521,7 +557,7 @@ public class DBdisplaytable {
         {
             conn = DBconnection.getConnection();
             
-            String query = "SELECT buyer_username , crop_name,quantity_requested,request_date,status FROM purchase_requests";
+            String query = "SELECT * FROM purchase_requests";
             
             PreparedStatement st = conn.prepareStatement(query);
             ResultSet rs = st.executeQuery();
@@ -529,13 +565,14 @@ public class DBdisplaytable {
             model.setRowCount(0);
             while(rs.next())
             {
+                String id = rs.getString("id");
                 String bName = rs.getString("buyer_username");
                 String cName = rs.getString("crop_name");
                 String quan = rs.getString("quantity_requested");
                 String date = rs.getString("request_date");
                 String status = rs.getString("status");
 
-                model.addRow(new Object[]{bName,cName,quan,date,status});
+                model.addRow(new Object[]{id,bName,cName,quan,date,status});
             }
             
         }

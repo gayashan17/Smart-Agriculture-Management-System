@@ -22,7 +22,7 @@ public class FarmerPReqsForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         DBdisplaytable.loadIntoFarmerPReqs(tblReqs);
-        
+        lblWarning.setVisible(false);
         
     }
 
@@ -41,7 +41,10 @@ public class FarmerPReqsForm extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReqs = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
+        pnlUpdate = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -72,21 +75,21 @@ public class FarmerPReqsForm extends javax.swing.JFrame {
         jLabel8.setText("Return");
         pnlReturn2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        jPanel2.add(pnlReturn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 110, 40));
+        jPanel2.add(pnlReturn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, 110, 40));
 
         tblReqs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Buyer Name", "Crop Name", "Quantity", "Request Date", "Status"
+                "ID", "Buyer Name", "Crop Name", "Quantity", "Request Date", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -100,13 +103,41 @@ public class FarmerPReqsForm extends javax.swing.JFrame {
             tblReqs.getColumnModel().getColumn(2).setResizable(false);
             tblReqs.getColumnModel().getColumn(3).setResizable(false);
             tblReqs.getColumnModel().getColumn(4).setResizable(false);
+            tblReqs.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 740, 310));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel1.setText("Purchase Requests");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 180, -1));
+        lblWarning.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblWarning.setForeground(new java.awt.Color(204, 0, 0));
+        lblWarning.setText("Purchase Requests");
+        jPanel2.add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 480, -1));
+
+        pnlUpdate.setBackground(new java.awt.Color(0, 153, 255));
+        pnlUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlUpdateMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlUpdateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlUpdateMouseExited(evt);
+            }
+        });
+        pnlUpdate.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Update");
+        pnlUpdate.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
+
+        jPanel2.add(pnlUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, 110, 40));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setText("Purchase Requests");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 180, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 800, 480));
 
@@ -134,6 +165,32 @@ public class FarmerPReqsForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_pnlReturn2MouseExited
 
+    private void pnlUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateMouseClicked
+    int selectedIndex = tblReqs.getSelectedRow();
+    
+    if(selectedIndex == -1)
+    {
+        lblWarning.setText("Please select a row first");
+    }
+    else
+    {
+        Object cellValueReqId = tblReqs.getValueAt(selectedIndex,0);
+        int reqId = Integer.parseInt(cellValueReqId.toString());
+        FarmerPReqUpdateForm form = new FarmerPReqUpdateForm();
+        form.setData(reqId);
+        form.setVisible(true);
+        this.dispose();
+    }
+    }//GEN-LAST:event_pnlUpdateMouseClicked
+
+    private void pnlUpdateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlUpdateMouseEntered
+
+    private void pnlUpdateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlUpdateMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -160,12 +217,15 @@ public class FarmerPReqsForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JPanel pnlReturn2;
+    private javax.swing.JPanel pnlUpdate;
     private javax.swing.JTable tblReqs;
     // End of variables declaration//GEN-END:variables
 }
