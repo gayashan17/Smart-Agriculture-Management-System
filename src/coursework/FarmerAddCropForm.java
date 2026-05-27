@@ -15,14 +15,14 @@ import java.time.LocalDate;
  *
  * @author User
  */
-public class AddCropForm extends javax.swing.JFrame {
+public class FarmerAddCropForm extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AddCropForm.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FarmerAddCropForm.class.getName());
     /**
      * Creates new form AddCropForm
      */
 
-    public AddCropForm() {
+    public FarmerAddCropForm() {
         initComponents();
         lblWarning.setVisible(false);
         setLocationRelativeTo(null);
@@ -341,7 +341,7 @@ public class AddCropForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AddCropForm().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FarmerAddCropForm().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -59,7 +59,6 @@ public class FarmerForm extends javax.swing.JFrame {
         lbldate = new javax.swing.JLabel();
         pnlLogout1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        pnlPfp = new javax.swing.JPanel();
         pnlEdit = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -198,9 +197,6 @@ public class FarmerForm extends javax.swing.JFrame {
 
         jPanel2.add(pnlLogout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 110, 40));
 
-        pnlPfp.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel2.add(pnlPfp, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 90, 80));
-
         pnlEdit.setBackground(new java.awt.Color(0, 153, 255));
         pnlEdit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -220,7 +216,7 @@ public class FarmerForm extends javax.swing.JFrame {
         jLabel9.setText("Profile");
         pnlEdit.add(jLabel9);
 
-        jPanel2.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, 90, -1));
+        jPanel2.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 90, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -311,7 +307,7 @@ public class FarmerForm extends javax.swing.JFrame {
         
         Functions.mouseClick(pnlAdd, color1, color2);
         
-        AddCropForm f = new AddCropForm ();
+        FarmerAddCropForm f = new FarmerAddCropForm ();
         f.setVisible(true);
         
         
@@ -331,7 +327,10 @@ public class FarmerForm extends javax.swing.JFrame {
         Color color1 = new Color(0,153,255);
         Color color2 = new Color(153,255,255);
         
-        Functions.mouseClick(pnlViewRec, color1, color2);        // TODO add your handling code here:
+        Functions.mouseClick(pnlViewRec, color1, color2);  
+        FarmerReccForm form = new FarmerReccForm();
+        form.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_pnlViewRecMouseClicked
 
     private void pnlAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseEntered
@@ -446,7 +445,6 @@ public class FarmerForm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlEdit;
     private javax.swing.JPanel pnlLogout;
     private javax.swing.JPanel pnlLogout1;
-    private javax.swing.JPanel pnlPfp;
     private javax.swing.JPanel pnlViewCr;
     private javax.swing.JPanel pnlViewRec;
     // End of variables declaration//GEN-END:variables

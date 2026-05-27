@@ -248,9 +248,59 @@ public class DBvalidation {
         return 0;
     }
     
-    public static String checkCropId(int cropId)
+    public static int checkCropId(String cropname)
     {
         Connection conn = null;
+        int dbId = 0;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT cropid FROM crops WHERE crop_name=?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1,cropname);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                dbId = rs.getInt("cropid");
+            }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to check crop ID: "+e);
+            System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection: "+e);
+                }
+            }
+            
+        }
+        if(dbId != 0)
+        {
+            return dbId;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    public static String checkCropName(int cropId)
+    {
+        Connection conn = null;
+        String cname = null;
         try
         {
             conn = DBconnection.getConnection();
@@ -263,12 +313,7 @@ public class DBvalidation {
             
             if(rs.next())
             {
-                String cname = rs.getString("crop_name");
-                return cname;
-            }
-            else
-            {
-                return null;
+                cname = rs.getString("crop_name");
             }
         }
         catch(Exception e)
@@ -291,7 +336,63 @@ public class DBvalidation {
             }
             
         }
-        return null;
+        if(cname == null)
+        {
+            return cname;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
+    public static int checkFarmerId(String farmername)
+    {
+        Connection conn = null;
+        int dbId = 0;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT id FROM users WHERE name=?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1,farmername);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                dbId = rs.getInt("id");
+            }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to check crop ID: "+e);
+            System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection: "+e);
+                }
+            }
+            
+        }
+        if(dbId != 0)
+        {
+            return dbId;
+        }
+        else
+        {
+            return 0;
+        }
     }
     
 }

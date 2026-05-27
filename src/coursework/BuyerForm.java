@@ -7,6 +7,7 @@ package coursework;
 import java.awt.Color;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
@@ -23,9 +24,11 @@ public class BuyerForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         lblwelcm.setText("Welcome, "+UserDetails.getUsername());
+        lblWarning.setVisible(false);
         
         LocalDate today = LocalDate.now();
         lbldate.setText("Today is: "+today.toString());
+        DBdisplaytable.loadIntoBuyerTable(tableBuyer);
     }
 
     /**
@@ -42,13 +45,14 @@ public class BuyerForm extends javax.swing.JFrame {
         lblwelcm = new javax.swing.JLabel();
         pnlLogout = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        pnlViewCr = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        pnlSend = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        pnlViewRq = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         lbldate = new javax.swing.JLabel();
+        pnlEdit = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableBuyer = new javax.swing.JTable();
+        pnlBuy = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,12 +65,18 @@ public class BuyerForm extends javax.swing.JFrame {
 
         lblwelcm.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblwelcm.setText("Welcome! (name)");
-        jPanel2.add(lblwelcm, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, -1, -1));
+        jPanel2.add(lblwelcm, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         pnlLogout.setBackground(new java.awt.Color(0, 153, 255));
         pnlLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlLogoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlLogoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlLogoutMouseExited(evt);
             }
         });
         pnlLogout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,78 +87,94 @@ public class BuyerForm extends javax.swing.JFrame {
         jLabel4.setText("Log out");
         pnlLogout.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        jPanel2.add(pnlLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 110, 40));
-
-        pnlViewCr.setBackground(new java.awt.Color(0, 153, 255));
-        pnlViewCr.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlViewCrMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlViewCrMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlViewCrMouseExited(evt);
-            }
-        });
-        pnlViewCr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("View Available Crops");
-        pnlViewCr.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
-
-        jPanel2.add(pnlViewCr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 360, 50));
-
-        pnlSend.setBackground(new java.awt.Color(0, 153, 255));
-        pnlSend.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlSendMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlSendMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlSendMouseExited(evt);
-            }
-        });
-        pnlSend.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Send Request");
-        pnlSend.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
-
-        jPanel2.add(pnlSend, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 360, 50));
-
-        pnlViewRq.setBackground(new java.awt.Color(0, 153, 255));
-        pnlViewRq.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlViewRqMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlViewRqMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlViewRqMouseExited(evt);
-            }
-        });
-        pnlViewRq.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("View My Requests");
-        pnlViewRq.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
-
-        jPanel2.add(pnlViewRq, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 360, 50));
+        jPanel2.add(pnlLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 420, 110, 40));
 
         lbldate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbldate.setText("date");
+        lbldate.setText("Today Is, (date)");
         jPanel2.add(lbldate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 0, 830, 520));
+        pnlEdit.setBackground(new java.awt.Color(0, 153, 255));
+        pnlEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlEditMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlEditMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlEditMouseExited(evt);
+            }
+        });
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 520));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Profile");
+        pnlEdit.add(jLabel9);
+
+        jPanel2.add(pnlEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 90, -1));
+
+        tableBuyer.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Crop", "Farmer", "Category", "Harvested Date", "Quantity", "Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableBuyer);
+        if (tableBuyer.getColumnModel().getColumnCount() > 0) {
+            tableBuyer.getColumnModel().getColumn(0).setResizable(false);
+            tableBuyer.getColumnModel().getColumn(1).setResizable(false);
+            tableBuyer.getColumnModel().getColumn(2).setResizable(false);
+            tableBuyer.getColumnModel().getColumn(3).setResizable(false);
+            tableBuyer.getColumnModel().getColumn(4).setResizable(false);
+            tableBuyer.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 780, 200));
+
+        pnlBuy.setBackground(new java.awt.Color(0, 153, 255));
+        pnlBuy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlBuyMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlBuyMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlBuyMouseExited(evt);
+            }
+        });
+        pnlBuy.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Buy");
+        pnlBuy.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, -1));
+
+        jPanel2.add(pnlBuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, 120, 40));
+
+        lblWarning.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblWarning.setForeground(new java.awt.Color(204, 0, 0));
+        lblWarning.setText("Warning");
+        jPanel2.add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 320, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 900, 480));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,62 +182,127 @@ public class BuyerForm extends javax.swing.JFrame {
     private void pnlLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLogoutMouseClicked
         Color color1 = new Color(0,153,255);
         Color color2 = new Color(153,255,255);
-        
+
         Functions.mouseClick(pnlLogout, color1, color2);
         int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to log out", "Log out", JOptionPane.YES_NO_OPTION);
-        
-                if(choice == JOptionPane.YES_OPTION )
-                {
-                    this.dispose();
-                    LoginForm f = new LoginForm();
-                    f.setVisible(true);
-                }
+
+        if(choice == JOptionPane.YES_OPTION )
+        {
+            this.dispose();
+            LoginForm f = new LoginForm();
+            f.setVisible(true);
+        }
     }//GEN-LAST:event_pnlLogoutMouseClicked
 
-    private void pnlViewCrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCrMouseClicked
-        Color color1 = new Color(153,255,255);
-        Color color2 = new Color(0,153,255);
+    private void pnlLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLogoutMouseEntered
+        pnlLogout.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlLogoutMouseEntered
+
+    private void pnlLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLogoutMouseExited
+        pnlLogout.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlLogoutMouseExited
+
+    private void pnlEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEditMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+
+        Functions.mouseClick(pnlEdit, color1, color2);
+        ProfileForm pf = new ProfileForm();
+        pf.setVisible(true);
+    }//GEN-LAST:event_pnlEditMouseClicked
+
+    private void pnlEditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEditMouseEntered
+        pnlEdit.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlEditMouseEntered
+
+    private void pnlEditMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEditMouseExited
+        pnlEdit.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlEditMouseExited
+
+    private void pnlBuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBuyMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
+
+        Functions.mouseClick(pnlBuy, color1, color2);
         
-        Functions.mouseClick(pnlViewCr, color1, color2);
-    }//GEN-LAST:event_pnlViewCrMouseClicked
-
-    private void pnlSendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSendMouseClicked
-        Color color1 = new Color(153,255,255);
-        Color color2 = new Color(0,153,255);
+        int selectedIndex = tableBuyer.getSelectedRow();
+        if(selectedIndex == -1)
+        {
+            lblWarning.setText("Please select a row first");
+            lblWarning.setVisible(true);
+        }
+        else
+        {
+            Object cellCropName = tableBuyer.getValueAt(selectedIndex,0);
+            Object cellFarmer = tableBuyer.getValueAt(selectedIndex,1);
+            int cropId = DBvalidation.checkCropId(cellCropName.toString());
+            String cropname = cellCropName.toString();
+            String farmer = cellFarmer.toString();
+            
+            int inputPrice = JOptionPane.showConfirmDialog(this, "Do you want to request buy,\nCrop:"+cropname+"\nFrom\nFarmer:"+farmer+"?", "Input Crop Price", JOptionPane.YES_NO_OPTION);
+            if(inputPrice == JOptionPane.YES_OPTION)
+            {
+                String inputQuantity = JOptionPane.showInputDialog(this, "Enter quantity:", "Input Quantity", JOptionPane.QUESTION_MESSAGE);
+                
+                if(inputQuantity.isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null,"Quantity cannot be empty");
+                }
+                double quantity = Double.parseDouble(inputQuantity);
+                if(quantity <= 0)
+                {
+                    JOptionPane.showMessageDialog(null,"Enter valid quantity");
+                }
+                else
+                {
+                    
+                    Connection conn = null;
+                    try
+                    {
+                        conn = DBconnection.getConnection();
+                        String query = "INSERT INTO purchase_requests (crop_name,buyer_username,quantity_requested,status) VALUES (?,?,?,?)";
+                        PreparedStatement ps = conn.prepareStatement(query);
+                        ps.setString(1,cropname);
+                        ps.setString(2,UserDetails.getUsername());
+                        ps.setDouble(3,quantity);
+                        ps.setString(4,"Pending");
+                        
+                        ps.executeUpdate();
+                    }
+                    catch(Exception e)
+                    {
+                        JOptionPane.showMessageDialog(null,"Error while trying to add your req: "+e);
+                    }
+                    finally
+                    {
+                        if(conn != null)
+                        {
+                            try
+                            {
+                                conn.close();
+                            }
+                            catch(Exception e)
+                            {
+                                System.out.println("Error while trying to close connection"+e);
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
         
-        Functions.mouseClick(pnlSend, color1, color2);
-    }//GEN-LAST:event_pnlSendMouseClicked
-
-    private void pnlViewRqMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewRqMouseClicked
-        Color color1 = new Color(153,255,255);
-        Color color2 = new Color(0,153,255);
         
-        Functions.mouseClick(pnlViewRq, color1, color2);
-    }//GEN-LAST:event_pnlViewRqMouseClicked
 
-    private void pnlViewCrMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCrMouseEntered
-        pnlViewCr.setBackground(new Color(0,204,255));
-    }//GEN-LAST:event_pnlViewCrMouseEntered
+    }//GEN-LAST:event_pnlBuyMouseClicked
 
-    private void pnlSendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSendMouseEntered
-        pnlSend.setBackground(new Color(0,204,255));
-    }//GEN-LAST:event_pnlSendMouseEntered
+    private void pnlBuyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBuyMouseEntered
+        pnlBuy.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlBuyMouseEntered
 
-    private void pnlViewRqMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewRqMouseEntered
-        pnlViewRq.setBackground(new Color(0,204,255));
-    }//GEN-LAST:event_pnlViewRqMouseEntered
-
-    private void pnlViewCrMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewCrMouseExited
-        pnlViewCr.setBackground(new Color(0,153,255));
-    }//GEN-LAST:event_pnlViewCrMouseExited
-
-    private void pnlSendMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSendMouseExited
-        pnlSend.setBackground(new Color(0,153,255));
-    }//GEN-LAST:event_pnlSendMouseExited
-
-    private void pnlViewRqMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewRqMouseExited
-        pnlViewRq.setBackground(new Color(0,153,255));
-    }//GEN-LAST:event_pnlViewRqMouseExited
+    private void pnlBuyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBuyMouseExited
+        pnlBuy.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlBuyMouseExited
 
     /**
      * @param args the command line arguments
@@ -241,15 +332,16 @@ public class BuyerForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JLabel lbldate;
     private javax.swing.JLabel lblwelcm;
+    private javax.swing.JPanel pnlBuy;
+    private javax.swing.JPanel pnlEdit;
     private javax.swing.JPanel pnlLogout;
-    private javax.swing.JPanel pnlSend;
-    private javax.swing.JPanel pnlViewCr;
-    private javax.swing.JPanel pnlViewRq;
+    private javax.swing.JTable tableBuyer;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -322,5 +323,193 @@ public class DBdisplaytable {
             }
         }
         return false;
+    }
+    
+    public static void loadIntoBuyerTable(JTable table)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT c.crop_name AS \"Crop\", u.name AS \"Farmer\", c.category AS \"Category\", c.harvest_date AS \"Harvested Date\", c.quantity AS \"Quantity\", hp.price AS \"Price\" FROM harvest_pricing hp INNER JOIN crops c ON hp.cropid = c.cropid INNER JOIN users u ON c.farmer_id = u.id;";
+            
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
+            model.setRowCount(0);
+            
+            while(rs.next())
+            {
+                String crop = rs.getString("Crop");
+                String farmer = rs.getString("Farmer");
+                String cat = rs.getString("Category");
+                String dbdate = rs.getString("Harvested Date");
+                String quantity = rs.getString("Quantity");
+                String price = rs.getString("Price");
+                model.addRow(new Object[]{crop, farmer, cat, dbdate, quantity, price});
+            }
+            
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to load into Table"+e);
+             System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection");
+                }
+                
+            }
+        }
+    }
+    
+    public static void loadIntoFOForm(JTable table)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT u.name AS \"FarmerName\", c.crop_name AS \"CropName\", c.category AS \"Category\", c.planting_date AS \"PlantingDate\", c.harvest_date AS \"HarvestingDate\", c.land_size AS \"LandSize\", c.quantity AS \"Quantity\", c.status AS \"Status\" FROM crops c INNER JOIN users u ON c.farmer_id = u.id;";
+            
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
+            model.setRowCount(0);
+            while(rs.next())
+            {
+                String farmer = rs.getString("FarmerName");
+                String crop = rs.getString("CropName");
+                String category = rs.getString("Category");
+                String planting = rs.getString("PlantingDate");
+                String harvesting = rs.getString("HarvestingDate");
+                String size = rs.getString("LandSize");
+                String qty = rs.getString("Quantity");
+                String status = rs.getString("Status");
+                model.addRow(new Object[]{farmer,crop,category,planting,harvesting,size,qty,status});
+            }
+            
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to load into Table"+e);
+             System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection");
+                }
+                
+            }
+        }
+    }
+    
+    public static void loadIntoFOViewForm(JTable table)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT u.id AS \"FarmerID\", u.name AS \"FarmerName\", COUNT(c.cropid) AS \"CropsCount\" FROM users u INNER JOIN crops c ON u.id = c.farmer_id GROUP BY u.id, u.name;";
+            
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
+            model.setRowCount(0);
+            while(rs.next())
+            {
+                String fid = rs.getString("FarmerID");
+                String fName = rs.getString("FarmerName");
+                String cropCount = rs.getString("CropsCount");
+
+                model.addRow(new Object[]{fid,fName,cropCount});
+            }
+            
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to load into Table"+e);
+             System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection");
+                }
+                
+            }
+        }
+    }
+    
+    public static void loadIntoFarmerRecc(JTable table)
+    {
+        Connection conn = null;
+        try
+        {
+            conn = DBconnection.getConnection();
+            
+            String query = "SELECT field_officer_id,recommendation ,created_at FROM field_officer_recommendations WHERE farmer_id=?";
+            
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setInt(1,UserDetails.getId());
+            ResultSet rs = st.executeQuery();
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
+            model.setRowCount(0);
+            while(rs.next())
+            {
+                String ffid = rs.getString("field_officer_id");
+                String recc = rs.getString("recommendation");
+                String date = rs.getString("created_at");
+
+                model.addRow(new Object[]{ffid,date,recc});
+            }
+            
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error while trying to load into Table"+e);
+             System.out.println(e);
+        }
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error while trying to close connection");
+                }
+                
+            }
+        }
     }
 }

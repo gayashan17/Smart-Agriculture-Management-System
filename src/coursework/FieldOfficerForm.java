@@ -27,6 +27,9 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         lbldate.setText("Today is: "+today.toString());
         lblwelcm.setText("Welcome, "+UserDetails.getUsername());
         
+        DBdisplaytable.loadIntoFOForm(tblCrops);
+        
+        
     }
 
     /**
@@ -46,10 +49,12 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         pnlView = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        pnlUpdate = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         pnlAdd = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblCrops = new javax.swing.JTable();
+        lblCrops = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,7 +90,7 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         jLabel4.setText("Log out");
         lblLogout.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        jPanel2.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 110, 40));
+        jPanel2.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, 110, 40));
 
         pnlView.setBackground(new java.awt.Color(0, 153, 255));
         pnlView.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -104,30 +109,9 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("View Farmers");
-        pnlView.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+        pnlView.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
-        jPanel2.add(pnlView, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 360, 50));
-
-        pnlUpdate.setBackground(new java.awt.Color(0, 153, 255));
-        pnlUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlUpdateMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlUpdateMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlUpdateMouseExited(evt);
-            }
-        });
-        pnlUpdate.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Update Crop Health");
-        pnlUpdate.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
-
-        jPanel2.add(pnlUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 360, 50));
+        jPanel2.add(pnlView, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 240, 40));
 
         pnlAdd.setBackground(new java.awt.Color(0, 153, 255));
         pnlAdd.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,11 +130,54 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Add Recommendations");
-        pnlAdd.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+        pnlAdd.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jPanel2.add(pnlAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 360, 50));
+        jPanel2.add(pnlAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 240, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 0, 820, 500));
+        tblCrops.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Farmer Name", "Crop Name", "Category", "Planted Date", "Harvested Date", "Land Size", "Quantity", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblCrops);
+        if (tblCrops.getColumnModel().getColumnCount() > 0) {
+            tblCrops.getColumnModel().getColumn(0).setResizable(false);
+            tblCrops.getColumnModel().getColumn(1).setResizable(false);
+            tblCrops.getColumnModel().getColumn(2).setResizable(false);
+            tblCrops.getColumnModel().getColumn(3).setResizable(false);
+            tblCrops.getColumnModel().getColumn(4).setResizable(false);
+            tblCrops.getColumnModel().getColumn(5).setResizable(false);
+            tblCrops.getColumnModel().getColumn(6).setResizable(false);
+            tblCrops.getColumnModel().getColumn(7).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 800, 220));
+
+        lblCrops.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCrops.setText("Current Crops");
+        jPanel2.add(lblCrops, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
+
+        lblWarning.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblWarning.setForeground(new java.awt.Color(204, 0, 0));
+        lblWarning.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarning.setText("Warning");
+        jPanel2.add(lblWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 700, 20));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 0, 840, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, -1));
 
@@ -177,30 +204,39 @@ public class FieldOfficerForm extends javax.swing.JFrame {
         Color color1 = new Color(153,255,255);
         Color color2 = new Color(0,153,255);
         
-        Functions.mouseClick(pnlView, color1, color2);
+        Functions.mouseClick(pnlView, color2, color1);
     }//GEN-LAST:event_pnlViewMouseClicked
-
-    private void pnlUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateMouseClicked
-        Color color1 = new Color(153,255,255);
-        Color color2 = new Color(0,153,255);
-        
-        Functions.mouseClick(pnlUpdate, color1, color2);
-    }//GEN-LAST:event_pnlUpdateMouseClicked
 
     private void pnlAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseClicked
         Color color1 = new Color(153,255,255);
         Color color2 = new Color(0,153,255);
         
-        Functions.mouseClick(pnlAdd, color1, color2);
+        Functions.mouseClick(pnlAdd, color2, color1);
+        
+        int selectedIndex = tblCrops.getSelectedRow();
+        if(selectedIndex == -1)
+        {
+            lblWarning.setText("Please select a row first");
+        }
+        else
+        {
+            
+            String farmerUser = tblCrops.getValueAt(selectedIndex, 0).toString();
+            int farmerId =DBvalidation.checkFarmerId(farmerUser);
+            String cropName = tblCrops.getValueAt(selectedIndex, 1).toString();
+
+            FieldOfficerReccForm form = new FieldOfficerReccForm();
+
+
+            form.setFarmerData(farmerId, farmerUser, cropName); 
+            form.setVisible(true);
+        }
+        
     }//GEN-LAST:event_pnlAddMouseClicked
 
     private void pnlViewMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewMouseEntered
         pnlView.setBackground(new Color(0,204,255));
     }//GEN-LAST:event_pnlViewMouseEntered
-
-    private void pnlUpdateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateMouseEntered
-        pnlUpdate.setBackground(new Color(0,204,255));
-    }//GEN-LAST:event_pnlUpdateMouseEntered
 
     private void pnlAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseEntered
         pnlAdd.setBackground(new Color(0,204,255));
@@ -213,10 +249,6 @@ public class FieldOfficerForm extends javax.swing.JFrame {
     private void pnlViewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlViewMouseExited
         pnlView.setBackground(new Color(0,153,255));
     }//GEN-LAST:event_pnlViewMouseExited
-
-    private void pnlUpdateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateMouseExited
-        pnlUpdate.setBackground(new Color(0,153,255));
-    }//GEN-LAST:event_pnlUpdateMouseExited
 
     private void pnlAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAddMouseExited
         pnlAdd.setBackground(new Color(0,153,255));
@@ -250,15 +282,17 @@ public class FieldOfficerForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCrops;
     private javax.swing.JPanel lblLogout;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JLabel lbldate;
     private javax.swing.JLabel lblwelcm;
     private javax.swing.JPanel pnlAdd;
-    private javax.swing.JPanel pnlUpdate;
     private javax.swing.JPanel pnlView;
+    private javax.swing.JTable tblCrops;
     // End of variables declaration//GEN-END:variables
 }

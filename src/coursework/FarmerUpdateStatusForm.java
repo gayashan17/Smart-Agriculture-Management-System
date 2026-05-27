@@ -7,6 +7,8 @@ package coursework;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 /**
  *
  * @author User
@@ -30,7 +32,7 @@ public class FarmerUpdateStatusForm extends javax.swing.JFrame {
         this.cropId = cropId;
         this.farmerId = farmerId;
         this.form = form;
-        lblCrop.setText(DBvalidation.checkCropId(cropId));
+        lblCrop.setText(DBvalidation.checkCropName(cropId));
     }
     
 
@@ -155,6 +157,72 @@ public class FarmerUpdateStatusForm extends javax.swing.JFrame {
         {
             lblWarning.setText("Please select crop status");
             lblWarning.setVisible(true);
+        }
+        else if(comboStatus.getSelectedIndex()== 4)
+        {
+            String inputPrice = JOptionPane.showInputDialog(this, "Enter the unit price for this harvest row:", "Input Crop Price", JOptionPane.QUESTION_MESSAGE);
+
+            if(inputPrice.trim().isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Please Enter a valid price");
+            }
+            else
+            {
+                try 
+                {
+                    double price = Double.parseDouble(inputPrice.trim());
+
+                    if (price < 0) 
+                    {
+                        JOptionPane.showMessageDialog(this, "Price cannot be negative!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    else
+                    {
+                        Connection conn = null;
+                        try
+                        {
+                            conn = DBconnection.getConnection();
+
+                            String query = "INSERT INTO harvest_pricing (cropid, price) VALUES (?, ?)";
+                            String query2 = "DELETE FROM crops WHERE cropid =?";
+                            PreparedStatement ps = conn.prepareStatement(query);
+                            ps.setInt(1,cropId); 
+                            ps.setDouble(2, price);
+                            PreparedStatement ps2 = conn.prepareStatement(query2);
+                            ps2.setInt(1,cropId);
+                            
+
+                            ps.executeUpdate();
+                            ps2.executeUpdate();
+                            this.dispose();
+                            FarmerViewCropsForm f = new FarmerViewCropsForm();
+                            f.setVisible(true);
+                        }
+                        catch(Exception e)
+                        {
+                            JOptionPane.showMessageDialog(this, "Database Error: " + e.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                        finally
+                        {
+                            if(conn != null)
+                            {
+                                try
+                                {
+                                    conn.close(); 
+                                } 
+                                catch(Exception e) 
+                                { 
+                                    System.out.println(e); 
+                                }
+                            }
+                        }
+                    }
+                } 
+                catch (NumberFormatException e) 
+                {
+                    JOptionPane.showConfirmDialog(this, "Please enter a valid number");
+                }
+            }
         }
         else
         {

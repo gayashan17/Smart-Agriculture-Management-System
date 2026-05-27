@@ -10,16 +10,19 @@ import java.awt.Color;
  *
  * @author User
  */
-public class FarmerReccForm extends javax.swing.JFrame {
+public class FieldOfficerViewFForm extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FarmerReccForm.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FieldOfficerViewFForm.class.getName());
 
     /**
-     * Creates new form FarmerReccForm
+     * Creates new form FieldOfficerViewFForm
      */
-    public FarmerReccForm() {
+    public FieldOfficerViewFForm() {
         initComponents();
-        DBdisplaytable.loadIntoFarmerRecc(tblRecc);
+        
+        setLocationRelativeTo(null);
+        setResizable(false);
+        DBdisplaytable.loadIntoFOViewForm(tblFarmers);
     }
 
     /**
@@ -35,9 +38,9 @@ public class FarmerReccForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblRecc = new javax.swing.JTable();
-        pnlReturn2 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        tblFarmers = new javax.swing.JTable();
+        pnlReturn = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -48,11 +51,11 @@ public class FarmerReccForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Reccomendations");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 210, -1));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel1.setText("Farmers");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 25, 90, -1));
 
-        tblRecc.setModel(new javax.swing.table.DefaultTableModel(
+        tblFarmers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -60,73 +63,57 @@ public class FarmerReccForm extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Field officer", "Created Date", "Reccomendation"
+                "Farmer ID", "Farmer Name", "Crops Count"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
+        ));
+        jScrollPane1.setViewportView(tblFarmers);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblRecc);
-        if (tblRecc.getColumnModel().getColumnCount() > 0) {
-            tblRecc.getColumnModel().getColumn(0).setResizable(false);
-            tblRecc.getColumnModel().getColumn(1).setResizable(false);
-            tblRecc.getColumnModel().getColumn(2).setResizable(false);
-        }
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 700, 300));
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 700, 200));
-
-        pnlReturn2.setBackground(new java.awt.Color(0, 153, 255));
-        pnlReturn2.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlReturn.setBackground(new java.awt.Color(0, 153, 255));
+        pnlReturn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlReturn2MouseClicked(evt);
+                pnlReturnMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlReturn2MouseEntered(evt);
+                pnlReturnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlReturn2MouseExited(evt);
+                pnlReturnMouseExited(evt);
             }
         });
-        pnlReturn2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlReturn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Return");
-        pnlReturn2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Return");
+        pnlReturn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
 
-        jPanel2.add(pnlReturn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 110, 40));
+        jPanel2.add(pnlReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 110, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 0, 780, 430));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 780, 460));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pnlReturn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturn2MouseClicked
+    private void pnlReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturnMouseClicked
         Color color1 = new Color(0,153,255);
         Color color2 = new Color(153,255,255);
 
-        Functions.mouseClick(pnlReturn2, color1, color2);
-        FarmerForm form = new FarmerForm();
-        form.setVisible(true);
+        Functions.mouseClick(pnlReturn, color1, color2);
         this.dispose();
-        
-    }//GEN-LAST:event_pnlReturn2MouseClicked
+    }//GEN-LAST:event_pnlReturnMouseClicked
 
-    private void pnlReturn2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturn2MouseEntered
+    private void pnlReturnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturnMouseEntered
+        pnlReturn.setBackground(new Color(0,204,255));
+    }//GEN-LAST:event_pnlReturnMouseEntered
 
-    }//GEN-LAST:event_pnlReturn2MouseEntered
-
-    private void pnlReturn2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturn2MouseExited
-
-    }//GEN-LAST:event_pnlReturn2MouseExited
+    private void pnlReturnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReturnMouseExited
+        pnlReturn.setBackground(new Color(0,153,255));
+    }//GEN-LAST:event_pnlReturnMouseExited
 
     /**
      * @param args the command line arguments
@@ -150,16 +137,16 @@ public class FarmerReccForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FarmerReccForm().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FieldOfficerViewFForm().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel pnlReturn2;
-    private javax.swing.JTable tblRecc;
+    private javax.swing.JPanel pnlReturn;
+    private javax.swing.JTable tblFarmers;
     // End of variables declaration//GEN-END:variables
 }

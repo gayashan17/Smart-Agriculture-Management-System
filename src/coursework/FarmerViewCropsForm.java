@@ -331,7 +331,7 @@ public class FarmerViewCropsForm extends javax.swing.JFrame {
 
         Functions.mouseClick(pnlAdd, color1, color2);
         
-        AddCropForm form = new AddCropForm();
+        FarmerAddCropForm form = new FarmerAddCropForm();
         form.setVisible(true);
         this.dispose();
 
@@ -428,15 +428,19 @@ public class FarmerViewCropsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlFilterResetMouseClicked
 
     private void pnlFilterResetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFilterResetMouseEntered
-        // TODO add your handling code here:
+        pnlFilterReset.setBackground(new Color(0,204,255));
     }//GEN-LAST:event_pnlFilterResetMouseEntered
 
     private void pnlFilterResetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFilterResetMouseExited
-        // TODO add your handling code here:
+        pnlFilterReset.setBackground(new Color(0,153,255));
     }//GEN-LAST:event_pnlFilterResetMouseExited
 
     private void pnlUpdateStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateStatusMouseClicked
+        Color color1 = new Color(0,153,255);
+        Color color2 = new Color(153,255,255);
 
+        Functions.mouseClick(pnlUpdateStatus, color1, color2);
+        
         int selectedIndex = tblCrops.getSelectedRow();
         if(selectedIndex == -1)
         {
@@ -451,7 +455,7 @@ public class FarmerViewCropsForm extends javax.swing.JFrame {
             int farmerId = -1;
             
             cropId = Integer.parseInt(cellValueCropId.toString());
-            farmerId = Integer.parseInt(cellValueFarmerId.toString())  ;
+            farmerId = Integer.parseInt(cellValueFarmerId.toString());
             
             if(cropId != -1 && farmerId != -1)
             {
@@ -467,11 +471,11 @@ public class FarmerViewCropsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlUpdateStatusMouseClicked
 
     private void pnlUpdateStatusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateStatusMouseEntered
-        // TODO add your handling code here:
+        pnlUpdateStatus.setBackground(new Color(0,204,255));
     }//GEN-LAST:event_pnlUpdateStatusMouseEntered
 
     private void pnlUpdateStatusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUpdateStatusMouseExited
-        // TODO add your handling code here:
+        pnlUpdateStatus.setBackground(new Color(0,153,255));
     }//GEN-LAST:event_pnlUpdateStatusMouseExited
 
     /**
